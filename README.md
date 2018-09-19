@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+# Third-part library
+
+| name | description | url | installation |
+| -- | -- | --| -- |
+| angular-highcharts highcharts| charts for Angular | https://www.highcharts.com  https://www.npmjs.com/package/angular-highcharts | npm i --save angular-highcharts highcharts |
+| jquery | 3.0+ | https://jquery.com/ | npm install --save jquery |
+| bootstrap | 4.0+ | http://www.bootcss.com/ | npm install --save bootstrap |
+| UI design | 数据统计后台 UI 设计 | http://www.17sucai.com/pins/tag/9076.html  http://www.woshipm.com/pd/85610.html |  |
