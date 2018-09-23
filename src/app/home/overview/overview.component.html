@@ -1,24 +1,19 @@
 <div class="data-box bg-light">
   <div class="container">
     <div class="row">
+        <div class="col-12">
+            <mat-card class="mat-card p-3 my-3">
+              <div [chart]="thirdChart" class="chart-card"></div>
+            </mat-card>
+          </div>
       <div class="col-6">
         <mat-card class="mat-card p-3 my-3">
-          <div [chart]="chart" class="chart-card"></div>
+          <div [chart]="firstChart" class="chart-card"></div>
         </mat-card>
       </div>
       <div class="col-6">
         <mat-card class="mat-card p-3 my-3">
-          <div [chart]="chart" class="chart-card"></div>
-        </mat-card>
-      </div>
-      <div class="col-6">
-        <mat-card class="mat-card p-3 my-3">
-          <div [chart]="chart" class="chart-card"></div>
-        </mat-card>
-      </div>
-      <div class="col-6">
-        <mat-card class="mat-card p-3 my-3">
-          <div [chart]="chart" class="chart-card"></div>
+          <div [chart]="secondChart" class="chart-card"></div>
         </mat-card>
       </div>
     </div>

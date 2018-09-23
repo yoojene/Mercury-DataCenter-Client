@@ -4,12 +4,12 @@
     <mat-toolbar-row>
       <span>Dashboard</span>
       <span class="example-spacer"></span>
-      <!-- <button mat-button>
+      <button mat-button (click)="handleSettingClick()">
         <i class="material-icons">
-          person
+          settings
         </i>
-        Frank Li
-      </button> -->
+        Settings
+      </button>
       <button mat-button [matMenuTriggerFor]="menu">
         <i class="material-icons">
           person

@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleSettingClick() {
+    alert('Go to settings page')
+  }
+
   profile() {
     alert('go to profile')
   }

@@ -1,8 +1,14 @@
 <div class="box">
   <mat-list role="list" class="list px-0 pb-3">
     <img src="assets/images/mercury-en.png" alt="" class="img-fluid logo">
-    <mat-list-item *ngFor="let item of menuList; let i=index" role="listitem" class="list-item text-white" [ngClass]="{'active':i==currentIndex}"
-      (click)="handleItemClick(i)">
+    <h4 class="section-title text-white pl-4 mt-4 mb-3">Statistics</h4>
+    <mat-list-item *ngFor="let item of statisticsList; let i=index" role="listitem" class="list-item text-white"
+      [ngClass]="{'active':i==currentStatisticsIndex && indexType=='statistics'}" (click)="handleStatisticsItemClick(i)">
+      <i class="material-icons mr-3">{{item.icon}}</i>
+      {{item.title}}
+    </mat-list-item>
+    <h4 class="section-title text-white pl-4 mt-4 mb-3">Operation</h4>
+    <mat-list-item *ngFor="let item of operationList; let i=index" [ngClass]="{'active':i==currentOperationIndex && indexType=='operation'}" role="listitem" class="list-item text-white" (click)="handleOperationItemClick(i)">
       <i class="material-icons mr-3">{{item.icon}}</i>
       {{item.title}}
     </mat-list-item>

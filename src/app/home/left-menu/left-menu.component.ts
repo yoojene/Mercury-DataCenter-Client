@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./left-menu.component.scss']
 })
 export class LeftMenuComponent implements OnInit {
-  menuList = [
+  statisticsList = [
     {
       title: 'Overview',
       icon: 'info',
@@ -37,25 +37,45 @@ export class LeftMenuComponent implements OnInit {
       title: 'Hotel',
       icon: 'local_hotel',
       url: 'hotel'
-    },
+    }
+  ];
+
+  operationList = [
     {
-      title: 'Meta data',
-      icon: 'toc',
+      title: 'Edit Meta Data',
+      icon: 'extension',
       url: 'meta-data'
     },
+    {
+      title: 'Add New Data',
+      icon: 'edit',
+      url: 'add-new'
+    }
   ]
-  currentIndex = 0
+
+  currentStatisticsIndex = 0
+  currentOperationIndex = 0
+  indexType = 'statistics'
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log(this.menuList)
+    console.log(this.statisticsList)
   }
 
-  handleItemClick(index) {
+  handleStatisticsItemClick(index) {
     console.log(index)
-    console.log(this.menuList[index].url)
-    this.currentIndex = index;
-    this.router.navigateByUrl(`home/${this.menuList[index].url}`)
+    console.log(this.statisticsList[index].url)
+    this.currentStatisticsIndex = index;
+    this.indexType = 'statistics'
+    this.router.navigateByUrl(`home/${this.statisticsList[index].url}`)
+  }
+
+  handleOperationItemClick(index) {
+    console.log(index)
+    console.log(this.operationList[index].url)
+    this.currentOperationIndex = index;
+    this.indexType = 'operation'
+    // this.router.navigateByUrl(`home/${this.operationList[index].url}`)
   }
 
 }
