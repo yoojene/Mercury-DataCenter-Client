@@ -1,14 +1,26 @@
-.background{
+@import '../../styles.scss';
+.logo {
+  height: 4rem;
+  width: auto;
+}
+
+.title {
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+
+.background {
   max-height: 100%;
   height: 100%;
-  .logo{
-    width: 60%;
-    height: auto;
-  }
-  .title{
-    font-weight: normal;
-    font-size: 1.6rem;
-  }
-  .form{
+}
+
+.example-container .field {
+  width: 100%;
+  margin: .5rem 0rem;
+}
+
+.pass-icon{
+  &:hover{
+    cursor: pointer;
   }
 }

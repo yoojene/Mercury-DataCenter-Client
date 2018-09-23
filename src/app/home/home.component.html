@@ -1,0 +1,40 @@
+<div class="box">
+  <!-- navbar -->
+  <mat-toolbar class="px-4 py-0 toolbar text-white">
+    <mat-toolbar-row>
+      <span>Dashboard</span>
+      <span class="example-spacer"></span>
+      <!-- <button mat-button>
+        <i class="material-icons">
+          person
+        </i>
+        Frank Li
+      </button> -->
+      <button mat-button [matMenuTriggerFor]="menu">
+        <i class="material-icons">
+          person
+        </i>
+        Frank Li
+        <i class="material-icons">
+          arrow_drop_down
+        </i>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="profile()">Profile</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <!-- navbar -->
+  <div class="container-fluid p-0">
+    <div class="row no-gutters">
+      <div class="col-2 left">
+        <app-left-menu></app-left-menu>
+      </div>
+      <div class="col right">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

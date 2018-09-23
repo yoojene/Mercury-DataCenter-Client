@@ -1,0 +1,10 @@
+<div class="box">
+  <mat-list role="list" class="list px-0 pb-3">
+    <img src="assets/images/mercury-en.png" alt="" class="img-fluid logo">
+    <mat-list-item *ngFor="let item of menuList; let i=index" role="listitem" class="list-item text-white" [ngClass]="{'active':i==currentIndex}"
+      (click)="handleItemClick(i)">
+      <i class="material-icons mr-3">{{item.icon}}</i>
+      {{item.title}}
+    </mat-list-item>
+  </mat-list>
+</div>

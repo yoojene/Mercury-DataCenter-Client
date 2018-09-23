@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-$myblack: #333333;
+$dark-black: #424242;
+$light-black:#616161;
+$dark-blue:#3F51B5;
+$blue:#1565C0;
+$light-blue:#2196F3;
 .test {
   background-color: red;
 }
@@ -18,4 +22,23 @@ body {
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+}
+
+button {
+  outline: none;
+}
+
+.my-shadow {
+  box-shadow: 2px 2px 5px lightgray;
+}
+
+.data-box {
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding: 4.5rem 0rem;
+}
+
+.active{
+  background-color: $dark-blue;
 }

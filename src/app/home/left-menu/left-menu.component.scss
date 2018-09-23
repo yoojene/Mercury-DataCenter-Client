@@ -1,0 +1,24 @@
+@import "../../../styles.scss";
+.box {
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
+  background-color: $light-blue;
+  .list {
+    width: 100%;
+    background-color: $light-blue;
+    .logo {
+      width: 60%;
+      height: auto;
+      margin: 5rem auto 1rem;
+      display: block;
+    }
+    .list-item {
+      transition: background-color .2s;
+      &:hover {
+        background-color: $light-blue - #333333;
+        cursor: pointer;
+      }
+    }
+  }
+}

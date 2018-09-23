@@ -1,38 +1,31 @@
-<div class="container-fluid background bg-light py-5">
+<div class="container-fluid background bg-white py-5">
   <div class="container">
     <div class="row">
-      <div class="col text-center p-5">
-        <img src="assets/images/mercury-en.png" alt="mercury" class="img-fluid px-5 logo">
-        <div class="title text-secondary">Data Management Platform</div>
+      <div class="col text-center py-5">
+        <img src="assets/images/mercury-en.png" alt="" class="img-fluid logo">
+        <div>Data Management Platform</div>
+        <div class="p-5">
+            According to the Material design spec button text has to be capitalized, however we have opted not to capitalize buttons automatically via text-transform: uppercase, because it can cause issues in certain locales. It is also worth noting that using ALL CAPS in the text itself causes issues for screen-readers, which will read the text character-by-character. We leave the decision of how to approach this to the consuming app.
+        </div>
       </div>
       <div class="col-4">
-        <form class="form bg-white p-4">
-          <div class="form-group text-center">
-            <h4 class="mb-4">Sign in</h4>
+        <div class="example-container p-4 mt-5 bg-light my-shadow">
+          <mat-form-field class="field">
+            <input matInput placeholder="Email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="field">
+            <input matInput placeholder="Password" [formControl]="password" [type]="hide ? 'password' : 'text'"
+              required>
+            <mat-icon class="pass-icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <div class="mt-4 text-right">
+            <button mat-raised-button color="primary" (click)="signin()" [disabled]="email.invalid || password.invalid">Sign in</button>
           </div>
-          <div class="form-group">
-            <input type="text" name="account" id="account" class="form-control" placeholder="Account">
-            <small id="account-help" class="form-text text-muted text-right">
-              <a href="#">Forget your account ?</a>
-            </small>
-          </div>
-          <div class="form-group">
-            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-            <small id="password-help" class="form-text text-muted text-right">
-              <a href="#">Forget your password ?</a>
-            </small>
-          </div>
-          <div class="form-check mb-4">
-            <input type="checkbox" name="rememberme" class="form-check-input" id="remember-me">
-            <label class="form-check-label" for="remember-me">Remember me</label>
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-primary btn-block">Sign in</button>
-          </div>
-          <div class="form-group text-center">
-              <a href="#">Create a new account</a>
-          </div>
-        </form>
+        </div>
+
+
       </div>
     </div>
   </div>
