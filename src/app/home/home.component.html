@@ -20,9 +20,13 @@
         </i>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="profile()">Profile</button>
+        <button mat-menu-item (click)="profile()" class="menu-btn">
+          <mat-icon class="mr-2">apps</mat-icon>Profile
+        </button>
         <mat-divider></mat-divider>
-        <button mat-menu-item (click)="logout()">Logout</button>
+        <button mat-menu-item (click)="logout()" class="menu-btn">
+          <mat-icon class="mr-2">power_settings_new</mat-icon>Logout
+        </button>
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>

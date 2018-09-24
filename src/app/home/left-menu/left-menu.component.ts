@@ -20,7 +20,7 @@ export class LeftMenuComponent implements OnInit {
     },
     {
       title: 'Vehicle',
-      icon: 'directions_car',
+      icon: 'airport_shuttle',
       url: 'vehicle'
     },
     {
@@ -49,7 +49,7 @@ export class LeftMenuComponent implements OnInit {
     {
       title: 'Add New Data',
       icon: 'edit',
-      url: 'add-new'
+      url: 'new-data'
     }
   ]
 
@@ -75,7 +75,7 @@ export class LeftMenuComponent implements OnInit {
     console.log(this.operationList[index].url)
     this.currentOperationIndex = index;
     this.indexType = 'operation'
-    // this.router.navigateByUrl(`home/${this.operationList[index].url}`)
+    this.router.navigateByUrl(`home/${this.operationList[index].url}`)
   }
 
 }
