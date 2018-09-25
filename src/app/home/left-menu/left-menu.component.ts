@@ -59,23 +59,22 @@ export class LeftMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log(this.statisticsList)
+    // console.log(this.statisticsList)
   }
 
   handleStatisticsItemClick(index) {
-    console.log(index)
-    console.log(this.statisticsList[index].url)
+    // console.log(index)
+    // console.log(this.statisticsList[index].url)
     this.currentStatisticsIndex = index;
     this.indexType = 'statistics'
     this.router.navigateByUrl(`home/${this.statisticsList[index].url}`)
   }
 
   handleOperationItemClick(index) {
-    console.log(index)
-    console.log(this.operationList[index].url)
+    // console.log(index)
+    // console.log(this.operationList[index].url)
     this.currentOperationIndex = index;
     this.indexType = 'operation'
     this.router.navigateByUrl(`home/${this.operationList[index].url}`)
   }
-
 }

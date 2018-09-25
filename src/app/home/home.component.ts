@@ -13,12 +13,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleSettingClick() {
-    alert('Go to settings page')
+  settings() {
+    this.router.navigateByUrl('home/settings')
   }
 
   profile() {
-    alert('go to profile')
+    this.router.navigateByUrl('home/profile')
   }
 
   logout() {
