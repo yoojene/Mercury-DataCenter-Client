@@ -1,7 +1,11 @@
 <div class="data-box bg-light">
   <div class="container">
     <div class="row">
-      <!-- nationality -->
+      <div class="col-12 mb-3">
+        <p class="lead text-center mb-0">DO NOT FORGET to click the <strong class="text-danger">Save All Data</strong> button at the <strong class="text-danger">bottom right</strong> of this page when you finish editing all the meta
+          data !</p>
+      </div>
+      <!--====== NATIONALITY ======-->
       <div class="col-12 mb-3">
         <mat-card>
           <h4 class="section-title">Nationality</h4>
@@ -16,7 +20,7 @@
           </mat-form-field>
         </mat-card>
       </div>
-      <!-- Airline -->
+      <!--====== AIRLINE ======-->
       <div class="col-12 mb-3">
         <mat-card>
           <h4 class="section-title">Airline</h4>
@@ -31,7 +35,7 @@
           </mat-form-field>
         </mat-card>
       </div>
-      <!-- cabin -->
+      <!--====== CABIN ======-->
       <div class="col-12 mb-3">
         <mat-card>
           <h4 class="section-title">Cabin</h4>
@@ -46,7 +50,7 @@
           </mat-form-field>
         </mat-card>
       </div>
-      <!-- Vehicle Provider -->
+      <!--====== VEHICLE PROVIDER ======-->
       <div class="col-12 mb-3">
         <mat-card>
           <h4 class="section-title">Vehicle Provider</h4>
@@ -99,8 +103,8 @@
                   </mat-form-field>
                 </div>
                 <div class="col-12 text-right mt-3">
-                  <button mat-raised-button class="ml-4" color="accent" (click)="cancelVehicleModal()">Cancel</button>
-                  <button mat-raised-button class="ml-4" color="primary" (click)="finishVehicleModal()">Finish</button>
+                  <button mat-raised-button class="ml-4" (click)="cancelVehicleModal()">Cancel</button>
+                  <button mat-raised-button class="ml-4" color="primary" (click)="finishVehicleModal()" [disabled]="newVehicleProvider.name=='' || newVehicleProvider.type.length==0">Finish</button>
                 </div>
               </div>
             </div>
@@ -115,7 +119,7 @@
           </div>
         </mat-card>
       </div>
-      <!-- Ship Provider -->
+      <!--======== SHIP PROVIDER ==========-->
       <div class="col-12 mb-3">
         <mat-card>
           <h4 class="section-title">Ship Provider</h4>
@@ -168,8 +172,8 @@
                   </mat-form-field>
                 </div>
                 <div class="col-12 text-right mt-3">
-                  <button mat-raised-button class="ml-4" color="accent" (click)="cancelShipModal()">Cancel</button>
-                  <button mat-raised-button class="ml-4" color="primary" (click)="finishShipModal()">Finish</button>
+                  <button mat-raised-button class="ml-4" (click)="cancelShipModal()">Cancel</button>
+                  <button mat-raised-button class="ml-4" color="primary" (click)="finishShipModal()" [disabled]="newShipProvider.name=='' || newShipProvider.type.length==0">Finish</button>
                 </div>
               </div>
             </div>
@@ -183,6 +187,72 @@
             </div>
           </div>
         </mat-card>
+      </div>
+      <!--======== HOTEL PROVIDER=========-->
+      <div class="col-12">
+        <mat-card>
+          <h4 class="section-title">Hotel</h4>
+          <div class="mt-3 w-100 px-3">
+            <div class="row mb-2 py-1 hotel-row" *ngFor="let item of hotelList; let i=index">
+              <div class="col-1">{{i+1}}</div>
+              <div class="col-4">{{item.name}}</div>
+              <div class="col">{{item.address}}</div>
+            </div>
+            <!-- hotel editor: start -->
+            <div class="row bg-light mt-4 py-3" [hidden]="!showHotelEditor">
+              <div class="col-4">
+                <div style="display:flex">
+                  <i class="material-icons mr-2">
+                    home
+                  </i>
+                  {{newHotel.name}}
+                </div>
+                <mat-form-field class="example-form-field mt-2 w-100">
+                  <input matInput type="text" placeholder="Enter a hotel name" [(ngModel)]="hotelName" (keyup.enter)="hotelNameOkBtn()">
+                  <button mat-button *ngIf="hotelName" matSuffix mat-icon-button aria-label="Clear" (click)="hotelName=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <div style="display:flex">
+                  <i class="material-icons mr-2">
+                    pin_drop
+                  </i>
+                  {{newHotel.address}}
+                </div>
+                <mat-form-field class="example-form-field mt-2 w-100">
+                  <input matInput type="text" placeholder="Enter a hotel address" [(ngModel)]="hotelAddress"
+                    (keyup.enter)="hotelAddressOkBtn()">
+                  <button mat-button *ngIf="hotelAddress" matSuffix mat-icon-button aria-label="Clear" (click)="hotelAddress=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+              <div class="col-12 text-right mt-3">
+                <button class="ml-4" mat-raised-button (click)="cancelHotelEdit()">Cancel</button>
+                <button class="ml-4" mat-raised-button color="primary" (click)="finishHotelEdit()" [disabled]="newHotel.name=='' || newHotel.address==''">Finish</button>
+              </div>
+            </div>
+            <!-- hotel editor: end -->
+            <div class="row mt-3" [hidden]="showHotelEditor">
+              <div class="col-12">
+                <button mat-mini-fab color="warn" (click)="addNewHotelBtn()" [hidden]="showHotelEditor">
+                  <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <!-- ====== SAVE BUTTON ======-->
+      <div class="col-12 mt-4 text-right">
+        <button mat-raised-button color="warn" (click)="saveAllData()">
+          <i class="material-icons mr-2">
+            save_alt
+          </i>
+          Save All Data
+        </button>
       </div>
     </div>
   </div>

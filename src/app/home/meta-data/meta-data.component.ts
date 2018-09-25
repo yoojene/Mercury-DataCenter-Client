@@ -11,7 +11,7 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
 
   finalData = {}
 
-  nationalityList = ['China', 'USA', 'Japan', 'British']
+  nationalityList = []
   nationality = ''
 
   cabinList = []
@@ -21,12 +21,7 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
   airline = ''
 
   // Vehicle Provider 
-  vehicleProviderList = [
-    {
-      'name': 'Mercury',
-      'type': ['Sprinter', 'SUV']
-    }
-  ]
+  vehicleProviderList = []
   newVehicleProvider = {
     name: '',
     type: []
@@ -36,12 +31,7 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
   showVehicleProviderEditor = false
 
   // Ship Provider
-  shipProviderList = [
-    {
-      'name': 'Mercury',
-      'type': ['Sprinter', 'SUV']
-    }
-  ]
+  shipProviderList = []
   newShipProvider = {
     name: '',
     type: []
@@ -52,6 +42,13 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
 
   // Hotel Variables
   hotelList = []
+  newHotel = {
+    name: '',
+    address: ''
+  }
+  hotelName = ''
+  hotelAddress = ''
+  showHotelEditor = false
 
 
   constructor() { }
@@ -162,6 +159,47 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
       type: []
     }
     this.showShipProviderEditor = false;
+  }
+
+  // Hotel Logics
+  hotelNameOkBtn() {
+    this.newHotel.name = this.hotelName
+    this.hotelName = ''
+  }
+
+  addNewHotelBtn() {
+    this.showHotelEditor = true
+  }
+
+  hotelAddressOkBtn() {
+    this.newHotel.address = this.hotelAddress
+    this.hotelAddress = ''
+  }
+
+  cancelHotelEdit() {
+    this.newHotel.name = ''
+    this.newHotel.address = ''
+    this.hotelName = ''
+    this.hotelAddress = ''
+    this.showHotelEditor = false;
+  }
+
+  finishHotelEdit() {
+    this.hotelList.push({
+      name: this.newHotel.name,
+      address: this.newHotel.address
+    })
+    this.newHotel = {
+      name: '',
+      address: ''
+    }
+    this.hotelName = ''
+    this.hotelAddress = ''
+    this.showHotelEditor = false;
+  }
+
+  saveAllData() {
+    alert('saving all data ...')
   }
 
 }
