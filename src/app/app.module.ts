@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -26,6 +27,9 @@ import { AirlineComponent } from './home/airline/airline.component';
 import { ShipComponent } from './home/ship/ship.component';
 import { HotelComponent } from './home/hotel/hotel.component';
 import { MetaDataComponent } from './home/meta-data/meta-data.component';
+import { NewDataComponent } from './home/new-data/new-data.component';
+import { ProfileComponent } from './home/profile/profile.component';
+import { SettingsComponent } from './home/settings/settings.component';
 
 
 @NgModule({
@@ -41,6 +45,9 @@ import { MetaDataComponent } from './home/meta-data/meta-data.component';
     ShipComponent,
     HotelComponent,
     MetaDataComponent,
+    NewDataComponent,
+    ProfileComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,8 @@ import { MetaDataComponent } from './home/meta-data/meta-data.component';
     ReactiveFormsModule,
     MatListModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

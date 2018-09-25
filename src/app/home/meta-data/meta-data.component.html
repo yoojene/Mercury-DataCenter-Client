@@ -103,8 +103,11 @@
                   </mat-form-field>
                 </div>
                 <div class="col-12 text-right mt-3">
-                  <button mat-raised-button class="ml-4" (click)="cancelVehicleModal()">Cancel</button>
-                  <button mat-raised-button class="ml-4" color="primary" (click)="finishVehicleModal()" [disabled]="newVehicleProvider.name=='' || newVehicleProvider.type.length==0">Finish</button>
+                  <button mat-raised-button class="ml-4" (click)="cancelVehicleModal()"><i class="material-icons">close</i>Cancel</button>
+                  <button mat-raised-button class="ml-4" color="primary" (click)="finishVehicleModal()" [disabled]="newVehicleProvider.name=='' || newVehicleProvider.type.length==0">
+                    <i class="material-icons">check</i>
+                    Finish
+                  </button>
                 </div>
               </div>
             </div>
@@ -172,8 +175,8 @@
                   </mat-form-field>
                 </div>
                 <div class="col-12 text-right mt-3">
-                  <button mat-raised-button class="ml-4" (click)="cancelShipModal()">Cancel</button>
-                  <button mat-raised-button class="ml-4" color="primary" (click)="finishShipModal()" [disabled]="newShipProvider.name=='' || newShipProvider.type.length==0">Finish</button>
+                  <button mat-raised-button class="ml-4" (click)="cancelShipModal()"><i class="material-icons">close</i>Cancel</button>
+                  <button mat-raised-button class="ml-4" color="primary" (click)="finishShipModal()" [disabled]="newShipProvider.name=='' || newShipProvider.type.length==0"><i class="material-icons">check</i>Finish</button>
                 </div>
               </div>
             </div>
@@ -230,8 +233,8 @@
                 </mat-form-field>
               </div>
               <div class="col-12 text-right mt-3">
-                <button class="ml-4" mat-raised-button (click)="cancelHotelEdit()">Cancel</button>
-                <button class="ml-4" mat-raised-button color="primary" (click)="finishHotelEdit()" [disabled]="newHotel.name=='' || newHotel.address==''">Finish</button>
+                <button class="ml-4" mat-raised-button (click)="cancelHotelEdit()"><i class="material-icons">close</i>Cancel</button>
+                <button class="ml-4" mat-raised-button color="primary" (click)="finishHotelEdit()" [disabled]="newHotel.name=='' || newHotel.address==''"><i class="material-icons">check</i>Finish</button>
               </div>
             </div>
             <!-- hotel editor: end -->

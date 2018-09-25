@@ -9,8 +9,9 @@ import { AirlineComponent } from "../app/home/airline/airline.component";
 import { ShipComponent } from "../app/home/ship/ship.component";
 import { HotelComponent } from "../app/home/hotel/hotel.component";
 import { MetaDataComponent } from "../app/home/meta-data/meta-data.component";
-import { Meta } from '@angular/platform-browser';
-
+import { NewDataComponent } from "../app/home/new-data/new-data.component";
+import { ProfileComponent } from "../app/home/profile/profile.component";
+import { SettingsComponent } from "../app/home/settings/settings.component";
 
 const routes: Routes = [
   {
@@ -48,6 +49,18 @@ const routes: Routes = [
       {
         path: 'meta-data',
         component: MetaDataComponent
+      },
+      {
+        path: 'new-data',
+        component: NewDataComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent
       }
     ]
   }
