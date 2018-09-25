@@ -1,9 +1,13 @@
 <div class="data-box bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-12 mb-3">
-        <p class="lead text-center mb-0">DO NOT FORGET to click the <strong class="text-danger">Save All Data</strong> button at the <strong class="text-danger">bottom right</strong> of this page when you finish editing all the meta
-          data !</p>
+      <div class="col-12 mb-3 py-2 text-center">
+        <p class="lead py-0 my-0">
+          DO NOT FORGET to click the <strong class="text-danger">Save
+            All Data</strong> button at the <strong class="text-danger">bottom right</strong> of this page when you finish editing all the
+          meta
+          data !
+        </p>
       </div>
       <!--====== NATIONALITY ======-->
       <div class="col-12 mb-3">
@@ -176,7 +180,8 @@
                 </div>
                 <div class="col-12 text-right mt-3">
                   <button mat-raised-button class="ml-4" (click)="cancelShipModal()"><i class="material-icons">close</i>Cancel</button>
-                  <button mat-raised-button class="ml-4" color="primary" (click)="finishShipModal()" [disabled]="newShipProvider.name=='' || newShipProvider.type.length==0"><i class="material-icons">check</i>Finish</button>
+                  <button mat-raised-button class="ml-4" color="primary" (click)="finishShipModal()" [disabled]="newShipProvider.name=='' || newShipProvider.type.length==0"><i
+                      class="material-icons">check</i>Finish</button>
                 </div>
               </div>
             </div>
@@ -234,7 +239,8 @@
               </div>
               <div class="col-12 text-right mt-3">
                 <button class="ml-4" mat-raised-button (click)="cancelHotelEdit()"><i class="material-icons">close</i>Cancel</button>
-                <button class="ml-4" mat-raised-button color="primary" (click)="finishHotelEdit()" [disabled]="newHotel.name=='' || newHotel.address==''"><i class="material-icons">check</i>Finish</button>
+                <button class="ml-4" mat-raised-button color="primary" (click)="finishHotelEdit()" [disabled]="newHotel.name=='' || newHotel.address==''"><i
+                    class="material-icons">check</i>Finish</button>
               </div>
             </div>
             <!-- hotel editor: end -->
