@@ -20,6 +20,7 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
   airlineList = []
   airline = ''
 
+  // Vehicle Provider 
   vehicleProviderList = [
     {
       'name': 'Mercury',
@@ -34,7 +35,22 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
   vehicleProviderType = ''
   showVehicleProviderEditor = false
 
-  shipProviderList = []
+  // Ship Provider
+  shipProviderList = [
+    {
+      'name': 'Mercury',
+      'type': ['Sprinter', 'SUV']
+    }
+  ]
+  newShipProvider = {
+    name: '',
+    type: []
+  }
+  shipProviderName = ''
+  shipProviderType = ''
+  showShipProviderEditor = false
+
+  // Hotel Variables
   hotelList = []
 
 
@@ -62,6 +78,7 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
     this.airline = ''
   }
 
+  // Vehicle Logics
   addNewVehicleBtn() {
     this.showVehicleProviderEditor = true;
   }
@@ -102,6 +119,49 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
       type: []
     }
     this.showVehicleProviderEditor = false;
+  }
+
+  // Ship Logics
+  addNewShipBtn() {
+    this.showShipProviderEditor = true;
+  }
+
+  shipProviderNameOkBtn() {
+    this.newShipProvider.name = this.shipProviderName
+    this.shipProviderName = ''
+  }
+
+  shipProviderTypeOkBtn() {
+    this.newShipProvider.type.push(this.shipProviderType)
+    this.shipProviderType = ''
+  }
+
+  cancelShipModal() {
+    this.shipProviderName = ''
+    this.shipProviderType = ''
+    this.newShipProvider = {
+      name: '',
+      type: []
+    }
+    this.showShipProviderEditor = false;
+  }
+
+  finishShipModal() {
+    if (!this.newShipProvider.name || this.newShipProvider.type.length == 0) {
+      alert('Please input the provider name and type');
+      return;
+    }
+    this.shipProviderList.push({
+      name: this.newShipProvider.name,
+      type: this.newShipProvider.type
+    })
+    this.shipProviderName = ''
+    this.shipProviderType = ''
+    this.newShipProvider = {
+      name: '',
+      type: []
+    }
+    this.showShipProviderEditor = false;
   }
 
 }
