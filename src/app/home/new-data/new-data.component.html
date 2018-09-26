@@ -69,61 +69,74 @@
       <div class="col-6 mb-4">
         <mat-card class="px-5">
           <h4 class="text-center">Vehicle</h4>
-          <div class="form-container mt-4">
-            <div class="container">
-              <div class="row">
-                <div class="col-6">
-                  <mat-form-field class="w-100">
-                    <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider">
-                      <mat-option *ngFor="let item of vehicleProviderList; let i=index" [value]="item.name">
-                        {{i+1}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-6">
-                  <mat-form-field class="w-100">
-                    <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type">
-                      <mat-option *ngFor="let item of vehicleProviderList" [value]="item.type">
-                        {{item.type}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <mat-form-field class="w-100">
-                    <input matInput [matDatepicker]="dp2" placeholder="Subscribe Date" required [formControl]="vehicle.subscribeDate">
-                    <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
-                    <mat-datepicker #dp2 disabled="false"></mat-datepicker>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <mat-form-field class="w-100">
-                    <input type="number" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats"
-                      required>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <mat-form-field class="w-100">
-                    <input type="number" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col text-right">
-                  <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
-                    (click)="saveVehicle()">
-                    <i class="material-icons mr-2">save_alt</i>
-                    Save
-                  </button>
-                </div>
-              </div>
+          <div class="form-container">
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider">
+                <mat-option *ngFor="let item of vehicleProviderList; let i=index" [value]="item.name">
+                  {{i+1}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type">
+                <mat-option *ngFor="let item of vehicleProviderList" [value]="item.type">
+                  {{item.type}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input matInput [matDatepicker]="dp2" placeholder="Subscribe Date" required [formControl]="vehicle.subscribeDate">
+              <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+              <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="number" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats" required>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="number" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
+            </mat-form-field>
+            <div class="text-right mt-3">
+              <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
+                (click)="saveVehicle()">
+                <i class="material-icons mr-2">save_alt</i>
+                Save
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <!--==== HOTEL ====-->
+      <div class="col-6 mb-4">
+        <mat-card class="px-5">
+          <h4 class="text-center">Hotel</h4>
+          <div class="form-container">
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Hotel Name *" [formControl]="hotel.name">
+                <mat-option *ngFor="let item of hotelList; let i=index" [value]="item.name">
+                  {{i+1}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="text" matInput placeholder="Address of Hotel" disabled>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input matInput [matDatepicker]="dp" placeholder="Check-in Date" required [formControl]="hotel.checkInDate">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="number" matInput placeholder="Number of Rooms" [formControl]="hotel.numOfRooms" required>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="number" matInput placeholder="Days for stay" [formControl]="hotel.days" required>
+            </mat-form-field>
+            <div class="text-right mt-3">
+              <button mat-raised-button color="primary" class="" [disabled]="hotel.name.invalid || hotel.checkInDate.invalid || hotel.numOfRooms.invalid || hotel.days.invalid"
+                (click)="saveHotel()">
+                <i class="material-icons mr-2">save_alt</i>
+                Save
+              </button>
             </div>
           </div>
         </mat-card>

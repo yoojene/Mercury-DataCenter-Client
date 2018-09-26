@@ -49,6 +49,28 @@ export class NewDataComponent implements OnInit {
     days: new FormControl('', [Validators.required])
   }
 
+  // HOTEL
+  hotelList=[
+    {
+      name: "Radisson Hotel Seattle Airport",
+      address: "1818 International Blvd, Seattle"
+    },
+    {
+      name: "Red Lion Hotel Seattle Airport",
+      address: "18220 International Boulevard, Seattle"
+    }
+  ]
+  hotel={
+    name:new FormControl('',[Validators.required]),
+    address:new FormControl('',[Validators.required]),
+    checkInDate:new FormControl('',[Validators.required]),
+    days:new FormControl('',[Validators.required]),
+    numOfRooms:new FormControl('',[Validators.required])
+  }
+
+  // SHIP
+
+
   constructor() { }
 
   ngOnInit() {
@@ -72,6 +94,10 @@ export class NewDataComponent implements OnInit {
 
   saveVehicle() {
     console.log(this.vehicle)
+  }
+
+  saveHotel(){
+    console.log(this.hotel)
   }
 
 
