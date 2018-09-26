@@ -69,7 +69,24 @@ export class NewDataComponent implements OnInit {
   }
 
   // SHIP
-
+  shipProviderList=[
+    {
+      name:'Ship 1',
+      type:['t1','t2','t3']
+    },
+    {
+      name:'Ship 2',
+      type:['p1','p2']
+    }
+  ]
+  ship={
+    provider:new FormControl('',[Validators.required]),
+    type:new FormControl('',[Validators.required]),
+    journeyType:new FormControl('',[Validators.required]),
+    journeyDesc:new FormControl('',[Validators.required]),
+    departurePort:new FormControl('',[Validators.required]),
+    departureDate:new FormControl('',[Validators.required])
+  }
 
   constructor() { }
 
@@ -98,6 +115,10 @@ export class NewDataComponent implements OnInit {
 
   saveHotel(){
     console.log(this.hotel)
+  }
+
+  saveShip(){
+    console.log(this.ship)
   }
 
 
