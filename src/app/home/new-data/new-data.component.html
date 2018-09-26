@@ -1,36 +1,133 @@
-<div class="data-box">
+<div class="data-box bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-4">
+      <div class="col-6 mb-4">
         <!-- customers -->
-        <h4 class="text-center">Customer</h4>
-        <div class="form-container">
-          <mat-form-field>
-            <input matInput placeholder="Fullname" [formControl]="customer.name" required>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Email" [formControl]="customer.email" required>
-            <mat-error *ngIf="customer.email.invalid">{{getEmailErrorMessage()}}</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Phone" [formControl]="customer.phone" required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-select placeholder="Nationality" [formControl]="customer.nationality">
-              <mat-option *ngFor="let nationality of nationalityList" [value]="nationality">
-                {{nationality}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <div class="mt-3 text-right">
-            <button mat-raised-button color="primary" class="" [disabled]="customer.name.invalid || customer.email.invalid || customer.phone.invalid || customer.nationality.invalid" (click)="saveCustomer()">
-              <i class="material-icons mr-2">save_alt</i>
-              Save
-            </button>
+        <mat-card class="px-5">
+          <h4 class="text-center">Customer</h4>
+          <div class="form-container">
+            <mat-form-field>
+              <input matInput placeholder="Full Name" [formControl]="customer.name" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Email" [formControl]="customer.email" required>
+              <mat-error *ngIf="customer.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Phone" [formControl]="customer.phone" required>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Nationality *" [formControl]="customer.nationality">
+                <mat-option *ngFor="let nationality of nationalityList" [value]="nationality">
+                  {{nationality}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="mt-3 text-right">
+              <button mat-raised-button color="primary" class="" [disabled]="customer.name.invalid || customer.email.invalid || customer.phone.invalid || customer.nationality.invalid"
+                (click)="saveCustomer()">
+                <i class="material-icons mr-2">save_alt</i>
+                Save
+              </button>
+            </div>
           </div>
-        </div>
+        </mat-card>
       </div>
-      <div class="col-6"></div>
+      <div class="col-6 mb-4">
+        <mat-card class="px-5">
+          <h4 class="text-center">Airline</h4>
+          <div class="form-container">
+            <mat-form-field>
+              <input matInput placeholder="Airline Name" [formControl]="airline.name" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Round Trip" [formControl]="airline.roundTrip" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput [matDatepicker]="dp3" placeholder="Departure Date" required [formControl]="airline.departureDate">
+              <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+              <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Cabin *" [formControl]="airline.cabin">
+                <mat-option *ngFor="let cabin of cabinList" [value]="cabin">
+                  {{cabin}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="mt-3 text-right">
+              <button mat-raised-button color="primary" class="" [disabled]="airline.name.invalid || airline.roundTrip.invalid || airline.departureDate.invalid || airline.cabin.invalid"
+                (click)="saveAirline()">
+                <i class="material-icons mr-2">save_alt</i>
+                Save
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <!--==== VEHICLE ====-->
+      <div class="col-6 mb-4">
+        <mat-card class="px-5">
+          <h4 class="text-center">Vehicle</h4>
+          <div class="form-container mt-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <mat-form-field class="w-100">
+                    <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider">
+                      <mat-option *ngFor="let item of vehicleProviderList; let i=index" [value]="item.name">
+                        {{i+1}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="w-100">
+                    <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type">
+                      <mat-option *ngFor="let item of vehicleProviderList" [value]="item.type">
+                        {{item.type}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="w-100">
+                    <input matInput [matDatepicker]="dp2" placeholder="Subscribe Date" required [formControl]="vehicle.subscribeDate">
+                    <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+                    <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="w-100">
+                    <input type="number" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats"
+                      required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="w-100">
+                    <input type="number" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col text-right">
+                  <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
+                    (click)="saveVehicle()">
+                    <i class="material-icons mr-2">save_alt</i>
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>
