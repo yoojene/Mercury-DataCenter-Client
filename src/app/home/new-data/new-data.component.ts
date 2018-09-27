@@ -50,7 +50,7 @@ export class NewDataComponent implements OnInit {
   }
 
   // VEHICLE
-  providerIndex = 0
+  vehicleProviderIndex = 0
   vehicleProviderList = [
     {
       name: 'Mercury',
@@ -74,6 +74,7 @@ export class NewDataComponent implements OnInit {
   }
 
   // HOTEL
+  hotelIndex = -1
   hotelList = [
     {
       name: "Radisson Hotel Seattle Airport",
@@ -87,13 +88,13 @@ export class NewDataComponent implements OnInit {
   hotel = {
     name: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
-    // checkInDate:new FormControl('',[Validators.required]),
     checkInDate: new FormControl(moment('')),
     days: new FormControl('', [Validators.required]),
     numOfRooms: new FormControl('', [Validators.required])
   }
 
   // SHIP
+  shipProviderIndex = 0
   shipProviderList = [
     {
       name: 'Ship 1',
@@ -110,7 +111,6 @@ export class NewDataComponent implements OnInit {
     journeyType: new FormControl('', [Validators.required]),
     journeyDesc: new FormControl('', [Validators.required]),
     departurePort: new FormControl('', [Validators.required]),
-    // departureDate:new FormControl('',[Validators.required])
     departureDate: new FormControl(moment(''))
   }
 
@@ -120,11 +120,41 @@ export class NewDataComponent implements OnInit {
   }
 
   // ==== CUSTOMER ====
-  // customerEmail = new FormControl('', [Validators.required, Validators.email]);
   getEmailErrorMessage() {
     return this.customer.email.hasError('required') ? 'You must enter a correct email address' :
       this.customer.email.hasError('email') ? 'Not a valid email' :
         '';
+  }
+
+  onHotelNameChange(event) {
+    let self = this
+    self.hotel.address = new FormControl('', [Validators.required])
+    this.hotelList.forEach(function (item, index) {
+      if (item.name == event.value) {
+        self.hotelIndex = index
+        self.hotel.address = new FormControl(self.hotelList[index].address, Validators.required)
+      }
+    })
+  }
+
+  onVehicleProviderChange(event) {
+    let self = this
+    self.vehicle.type = new FormControl('', [Validators.required])
+    this.vehicleProviderList.forEach(function (item, index) {
+      if (item.name == event.value) {
+        self.vehicleProviderIndex = index;
+      }
+    })
+  }
+
+  onShipProviderChange(event) {
+    let self = this
+    self.ship.type = new FormControl('', [Validators.required])
+    this.shipProviderList.forEach(function (item, index) {
+      if (item.name == event.value) {
+        self.shipProviderIndex = index
+      }
+    })
   }
 
   saveCustomer() {
