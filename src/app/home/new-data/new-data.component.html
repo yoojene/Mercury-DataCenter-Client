@@ -67,44 +67,44 @@
       </div>
       <!--==== VEHICLE ====-->
       <div class="col-6 mb-4">
-          <mat-card class="px-5">
-            <h4 class="text-center">Vehicle</h4>
-            <div class="form-container">
-              <mat-form-field class="w-100">
-                <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider">
-                  <mat-option *ngFor="let item of vehicleProviderList; let i=index" [value]="item.name">
-                    {{item.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type">
-                  <mat-option *ngFor="let item of vehicleProviderList" [value]="item.type">
-                    {{item.type}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <input matInput [matDatepicker]="dp2" placeholder="Subscribe Date" required [formControl]="vehicle.subscribeDate">
-                <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
-                <mat-datepicker #dp2 disabled="false"></mat-datepicker>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <input type="number" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats" required>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <input type="number" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
-              </mat-form-field>
-              <div class="text-right mt-3">
-                <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
-                  (click)="saveVehicle()">
-                  <i class="material-icons mr-2">save_alt</i>
-                  Save
-                </button>
-              </div>
+        <mat-card class="px-5">
+          <h4 class="text-center">Vehicle</h4>
+          <div class="form-container">
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider">
+                <mat-option *ngFor="let item of vehicleProviderList; let i=index" [value]="item.name">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type">
+                <mat-option *ngFor="let item of vehicleProviderList" [value]="item.type">
+                  {{item.type}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input matInput [matDatepicker]="dp2" placeholder="Subscribe Date" required [formControl]="vehicle.subscribeDate">
+              <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+              <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="number" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats" required>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="number" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
+            </mat-form-field>
+            <div class="text-right mt-3">
+              <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
+                (click)="saveVehicle()">
+                <i class="material-icons mr-2">save_alt</i>
+                Save
+              </button>
             </div>
-          </mat-card>
-        </div>
+          </div>
+        </mat-card>
+      </div>
       <!--==== HOTEL ====-->
       <div class="col-6 mb-4">
         <mat-card class="px-5">
@@ -143,47 +143,47 @@
       </div>
       <!--==== SHIP ====-->
       <div class="col-6 mb-4">
-          <mat-card class="px-5">
-            <h4 class="text-center">Ship</h4>
-            <div class="form-container">
-              <mat-form-field class="w-100">
-                <mat-select placeholder="Ship Provider *" [formControl]="ship.provider">
-                  <mat-option *ngFor="let item of shipProviderList; let i=index" [value]="item.name">
-                    {{item.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <mat-select placeholder="Ship Type *" [formControl]="ship.type">
-                  <mat-option *ngFor="let item of shipProviderList" [value]="item.type">
-                    {{item.type}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <input matInput [matDatepicker]="dp3" placeholder="Departure Date" required [formControl]="ship.departureDate">
-                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                  <input type="text" matInput placeholder="Departure Port" [formControl]="ship.departurePort" required>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <input type="text" matInput placeholder="Journey Type" [formControl]="ship.journeyType" required>
-              </mat-form-field>
-              <mat-form-field class="w-100">
-                <input type="text" matInput placeholder="Journey Description" [formControl]="ship.journeyDesc" required>
-              </mat-form-field>
-              <div class="text-right mt-3">
-                <button mat-raised-button color="primary" class="" [disabled]="ship.provider.invalid || ship.type.invalid || ship.journeyType.invalid || ship.journeyDesc.invalid || ship.departureDate.invalid || ship.departurePort.invalid"
-                  (click)="saveShip()">
-                  <i class="material-icons mr-2">save_alt</i>
-                  Save
-                </button>
-              </div>
+        <mat-card class="px-5">
+          <h4 class="text-center">Ship</h4>
+          <div class="form-container">
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Ship Provider *" [formControl]="ship.provider">
+                <mat-option *ngFor="let item of shipProviderList; let i=index" [value]="item.name">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Ship Type *" [formControl]="ship.type">
+                <mat-option *ngFor="let item of shipProviderList" [value]="item.type">
+                  {{item.type}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input matInput [matDatepicker]="dp3" placeholder="Departure Date" required [formControl]="ship.departureDate">
+              <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+              <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="text" matInput placeholder="Departure Port" [formControl]="ship.departurePort" required>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="text" matInput placeholder="Journey Type" [formControl]="ship.journeyType" required>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input type="text" matInput placeholder="Journey Description" [formControl]="ship.journeyDesc" required>
+            </mat-form-field>
+            <div class="text-right mt-3">
+              <button mat-raised-button color="primary" class="" [disabled]="ship.provider.invalid || ship.type.invalid || ship.journeyType.invalid || ship.journeyDesc.invalid || ship.departureDate.invalid || ship.departurePort.invalid"
+                (click)="saveShip()">
+                <i class="material-icons mr-2">save_alt</i>
+                Save
+              </button>
             </div>
-          </mat-card>
-        </div>
+          </div>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

@@ -1,9 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
+import * as _moment from 'moment';
+const moment = _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MM YYYY',
+  },
+};
+
 @Component({
   selector: 'app-new-data',
   templateUrl: './new-data.component.html',
   styleUrls: ['./new-data.component.scss'],
+  providers: [
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class NewDataComponent implements OnInit {
   // CUSTOMER
@@ -22,7 +44,8 @@ export class NewDataComponent implements OnInit {
     id: '',
     name: new FormControl('', [Validators.required]),
     roundTrip: new FormControl('', [Validators.required]),
-    departureDate: new FormControl('', [Validators.required]),
+    // departureDate: new FormControl('', [Validators.required]),
+    departureDate: new FormControl(moment('')),
     cabin: new FormControl('', [Validators.required])
   }
 
@@ -44,13 +67,14 @@ export class NewDataComponent implements OnInit {
     type: new FormControl('', [Validators.required]),
     numOfSeats: new FormControl('', [Validators.required]),
     // 预定日期
-    subscribeDate: new FormControl('', [Validators.required]),
+    // subscribeDate: new FormControl('', [Validators.required]),
+    subscribeDate: new FormControl(moment('')),
     // 租赁天数
     days: new FormControl('', [Validators.required])
   }
 
   // HOTEL
-  hotelList=[
+  hotelList = [
     {
       name: "Radisson Hotel Seattle Airport",
       address: "1818 International Blvd, Seattle"
@@ -60,32 +84,34 @@ export class NewDataComponent implements OnInit {
       address: "18220 International Boulevard, Seattle"
     }
   ]
-  hotel={
-    name:new FormControl('',[Validators.required]),
-    address:new FormControl('',[Validators.required]),
-    checkInDate:new FormControl('',[Validators.required]),
-    days:new FormControl('',[Validators.required]),
-    numOfRooms:new FormControl('',[Validators.required])
+  hotel = {
+    name: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    // checkInDate:new FormControl('',[Validators.required]),
+    checkInDate: new FormControl(moment('')),
+    days: new FormControl('', [Validators.required]),
+    numOfRooms: new FormControl('', [Validators.required])
   }
 
   // SHIP
-  shipProviderList=[
+  shipProviderList = [
     {
-      name:'Ship 1',
-      type:['t1','t2','t3']
+      name: 'Ship 1',
+      type: ['t1', 't2', 't3']
     },
     {
-      name:'Ship 2',
-      type:['p1','p2']
+      name: 'Ship 2',
+      type: ['p1', 'p2']
     }
   ]
-  ship={
-    provider:new FormControl('',[Validators.required]),
-    type:new FormControl('',[Validators.required]),
-    journeyType:new FormControl('',[Validators.required]),
-    journeyDesc:new FormControl('',[Validators.required]),
-    departurePort:new FormControl('',[Validators.required]),
-    departureDate:new FormControl('',[Validators.required])
+  ship = {
+    provider: new FormControl('', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
+    journeyType: new FormControl('', [Validators.required]),
+    journeyDesc: new FormControl('', [Validators.required]),
+    departurePort: new FormControl('', [Validators.required]),
+    // departureDate:new FormControl('',[Validators.required])
+    departureDate: new FormControl(moment(''))
   }
 
   constructor() { }
@@ -113,11 +139,11 @@ export class NewDataComponent implements OnInit {
     console.log(this.vehicle)
   }
 
-  saveHotel(){
+  saveHotel() {
     console.log(this.hotel)
   }
 
-  saveShip(){
+  saveShip() {
     console.log(this.ship)
   }
 
