@@ -45,7 +45,6 @@ export class NewDataComponent implements OnInit {
     id: '',
     name: new FormControl('', [Validators.required]),
     roundTrip: new FormControl('', [Validators.required]),
-    // departureDate: new FormControl('', [Validators.required]),
     departureDate: new FormControl(moment('')),
     cabin: new FormControl('', [Validators.required])
   }
@@ -66,12 +65,11 @@ export class NewDataComponent implements OnInit {
   vehicle = {
     provider: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
-    numOfSeats: new FormControl('', [Validators.required]),
+    numOfSeats: new FormControl('', [Validators.required, Validators.pattern(/^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$/)]),
     // 预定日期
-    // subscribeDate: new FormControl('', [Validators.required]),
     subscribeDate: new FormControl(moment('')),
     // 租赁天数
-    days: new FormControl('', [Validators.required])
+    days: new FormControl('', [Validators.required, Validators.pattern(/^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$/)])
   }
 
   // HOTEL
@@ -90,8 +88,8 @@ export class NewDataComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     checkInDate: new FormControl(moment('')),
-    days: new FormControl('', [Validators.required]),
-    numOfRooms: new FormControl('', [Validators.required])
+    days: new FormControl('', [Validators.required, Validators.pattern(/^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$/)]),
+    numOfRooms: new FormControl('', [Validators.required, Validators.pattern(/^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$/)])
   }
 
   // SHIP

@@ -91,10 +91,10 @@
               <mat-datepicker #dp2 disabled="false"></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="number" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats" required>
+              <input type="number" min="1" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats" required>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="number" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
+              <input type="number" min="1" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
             </mat-form-field>
             <div class="text-right mt-2">
               <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
@@ -127,10 +127,10 @@
               <mat-datepicker #dp4 disabled="false"></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="number" matInput placeholder="Number of Rooms" [formControl]="hotel.numOfRooms" required>
+              <input type="number" min="1" matInput placeholder="Number of Rooms" [formControl]="hotel.numOfRooms" required>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="number" matInput placeholder="Days for stay" [formControl]="hotel.days" required>
+              <input type="number" min="1" matInput placeholder="Days for stay" [formControl]="hotel.days" required>
             </mat-form-field>
             <div class="text-right mt-2">
               <button mat-raised-button color="primary" class="" [disabled]="hotel.name.invalid || hotel.checkInDate.invalid || hotel.numOfRooms.invalid || hotel.days.invalid"
