@@ -11,7 +11,7 @@ export const MY_FORMATS = {
     dateInput: 'LL',
   },
   display: {
-    dateInput: 'LL',
+    dateInput: 'YYYY-MM-DD', // datepicker display format
     monthYearLabel: 'MM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MM YYYY',
@@ -27,6 +27,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
+
 export class NewDataComponent implements OnInit {
   // CUSTOMER
   nationalityList = ['China', 'USA', 'Japan', 'Taiwan', 'HangKong', 'Canda', 'Britihsh']
