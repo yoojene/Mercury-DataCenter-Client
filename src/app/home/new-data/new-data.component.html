@@ -78,7 +78,7 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type">
+              <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type" [disabled]="vehicle.provider.value==''">
                 <mat-option *ngFor="let item of vehicleProviderList" [value]="item.type">
                   {{item.type}}
                 </mat-option>
@@ -154,7 +154,7 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <mat-select placeholder="Ship Type *" [formControl]="ship.type">
+              <mat-select placeholder="Ship Type *" [formControl]="ship.type" [disabled]="ship.provider.value==''">
                 <mat-option *ngFor="let item of shipProviderList" [value]="item.type">
                   {{item.type}}
                 </mat-option>
