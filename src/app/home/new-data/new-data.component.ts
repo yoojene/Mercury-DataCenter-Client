@@ -64,6 +64,7 @@ export class NewDataComponent implements OnInit {
   ]
 
   vehicle = {
+    id: '',
     provider: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
     numOfSeats: new FormControl('', [Validators.required, Validators.pattern(/^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$/)]),
@@ -182,7 +183,16 @@ export class NewDataComponent implements OnInit {
   }
 
   saveVehicle() {
-    console.log(this.vehicle)
+    let vehicle = {
+      id: this.utilityService.generateID('vehicles'),
+      provider: this.vehicle.provider.value,
+      type: this.vehicle.type.value,
+      numOfSeats: this.vehicle.numOfSeats.value,
+      subscribeDate: this.vehicle.subscribeDate.value,
+      days: this.vehicle.days.value
+    }
+    console.log('saving new vehicle info ...')
+    console.log(vehicle)
   }
 
   saveHotel() {
