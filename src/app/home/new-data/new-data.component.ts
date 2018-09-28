@@ -87,6 +87,7 @@ export class NewDataComponent implements OnInit {
     }
   ]
   hotel = {
+    id: '',
     name: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     checkInDate: new FormControl(moment('')),
@@ -196,7 +197,16 @@ export class NewDataComponent implements OnInit {
   }
 
   saveHotel() {
-    console.log(this.hotel)
+    let hotel = {
+      id: this.utilityService.generateID('hotels'),
+      name: this.hotel.name.value,
+      address: this.hotel.address.value,
+      checkInDate: this.hotel.checkInDate.value,
+      days: this.hotel.days.value,
+      numOfRooms: this.hotel.numOfRooms.value
+    }
+    console.log('saving new hotel info ...')
+    console.log(hotel)
   }
 
   saveShip() {
