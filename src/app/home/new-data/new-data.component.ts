@@ -165,6 +165,7 @@ export class NewDataComponent implements OnInit {
       phone: this.customer.phone.value,
       nationality: this.customer.nationality.value
     }
+    console.log('sending request to server by POST method ...')
     console.log(customer)
   }
 
