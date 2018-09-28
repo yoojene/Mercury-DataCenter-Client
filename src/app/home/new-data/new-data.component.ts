@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { UtilityService } from "../../service/utility.service";
 
 import * as _moment from 'moment';
 const moment = _moment;
@@ -113,7 +114,7 @@ export class NewDataComponent implements OnInit {
     departureDate: new FormControl(moment(''))
   }
 
-  constructor() { }
+  constructor(private utilityService: UtilityService) { }
 
   ngOnInit() {
   }
@@ -157,7 +158,14 @@ export class NewDataComponent implements OnInit {
   }
 
   saveCustomer() {
-    console.log(this.customer)
+    let customer = {
+      id: this.utilityService.generateID('customers'),
+      name: this.customer.name.value,
+      email: this.customer.email.value,
+      phone: this.customer.phone.value,
+      nationality: this.customer.nationality.value
+    }
+    console.log(customer)
   }
 
   saveAirline() {
