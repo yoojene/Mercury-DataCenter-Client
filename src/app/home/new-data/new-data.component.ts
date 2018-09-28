@@ -160,6 +160,7 @@ export class NewDataComponent implements OnInit {
     })
   }
 
+  //==== Handle Save Button Click ====
   saveCustomer() {
     let customer = {
       id: this.utilityService.generateID('customers'),
@@ -177,7 +178,7 @@ export class NewDataComponent implements OnInit {
       id: this.utilityService.generateID('airlines'),
       name: this.airline.name.value,
       roundTrip: this.airline.roundTrip.value,
-      departureDate: this.airline.departureDate.value,
+      departureDate: this.utilityService.formatDate(this.airline.departureDate.value._i),
       cabin: this.airline.cabin.value
     }
     console.log('saving new airline info to database on server ...')
@@ -190,7 +191,7 @@ export class NewDataComponent implements OnInit {
       provider: this.vehicle.provider.value,
       type: this.vehicle.type.value,
       numOfSeats: this.vehicle.numOfSeats.value,
-      subscribeDate: this.vehicle.subscribeDate.value,
+      subscribeDate: this.utilityService.formatDate(this.vehicle.subscribeDate.value._i),
       days: this.vehicle.days.value
     }
     console.log('saving new vehicle info ...')
@@ -202,7 +203,7 @@ export class NewDataComponent implements OnInit {
       id: this.utilityService.generateID('hotels'),
       name: this.hotel.name.value,
       address: this.hotel.address.value,
-      checkInDate: this.hotel.checkInDate.value,
+      checkInDate: this.utilityService.formatDate(this.hotel.checkInDate.value._i),
       days: this.hotel.days.value,
       numOfRooms: this.hotel.numOfRooms.value
     }
@@ -218,7 +219,7 @@ export class NewDataComponent implements OnInit {
       journeyType: this.ship.journeyType.value,
       journeyDesc: this.ship.journeyDesc.value,
       departurePort: this.ship.departurePort.value,
-      departureDate: this.ship.departureDate.value
+      departureDate: this.utilityService.formatDate(this.ship.departureDate.value._i)
     }
     console.log('Saving new ship info ...')
     console.log(ship)

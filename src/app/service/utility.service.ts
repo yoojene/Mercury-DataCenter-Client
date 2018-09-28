@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as moment from "moment";
+import { MyDate } from "../module/MyDate";
 
 
 @Injectable({
@@ -28,5 +29,9 @@ export class UtilityService {
   generateID(tableName: String) {
     let result = `${tableName}-${this.getCurrentDatetime()}${this.getRandomNum()}`
     return result
+  }
+
+  formatDate(dateObj: MyDate): String {
+    return `${dateObj.year}-${dateObj.month}-${dateObj.date}`
   }
 }
