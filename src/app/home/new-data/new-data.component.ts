@@ -170,7 +170,15 @@ export class NewDataComponent implements OnInit {
   }
 
   saveAirline() {
-    console.log(this.airline)
+    let airline = {
+      id: this.utilityService.generateID('airlines'),
+      name: this.airline.name.value,
+      roundTrip: this.airline.roundTrip.value,
+      departureDate: this.airline.departureDate.value,
+      cabin: this.airline.cabin.value
+    }
+    console.log('saving new airline info to database on server ...')
+    console.log(airline)
   }
 
   saveVehicle() {
