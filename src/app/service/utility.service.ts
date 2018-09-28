@@ -26,12 +26,27 @@ export class UtilityService {
     return result
   }
 
+  // Add zero for month or date number
+  private checkZeroForDateNum(num: number): String {
+    let result = ''
+    let str = String(num)
+    switch (str.length) {
+      case 1:
+        result = '0' + str
+        break;
+      case 2:
+        result = str
+        break;
+    }
+    return result
+  }
+
   generateID(tableName: String) {
     let result = `${tableName}-${this.getCurrentDatetime()}${this.getRandomNum()}`
     return result
   }
 
   formatDate(dateObj: MyDate): String {
-    return `${dateObj.year}-${dateObj.month}-${dateObj.date}`
+    return `${dateObj.year}-${this.checkZeroForDateNum(dateObj.month + 1)}-${this.checkZeroForDateNum(dateObj.date)}`
   }
 }
