@@ -108,6 +108,7 @@ export class NewDataComponent implements OnInit {
     }
   ]
   ship = {
+    id: '',
     provider: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
     journeyType: new FormControl('', [Validators.required]),
@@ -210,7 +211,17 @@ export class NewDataComponent implements OnInit {
   }
 
   saveShip() {
-    console.log(this.ship)
+    let ship = {
+      id: this.utilityService.generateID('ships'),
+      provider: this.ship.provider.value,
+      type: this.ship.type.value,
+      journeyType: this.ship.journeyType.value,
+      journeyDesc: this.ship.journeyDesc.value,
+      departurePort: this.ship.departurePort.value,
+      departureDate: this.ship.departureDate.value
+    }
+    console.log('Saving new ship info ...')
+    console.log(ship)
   }
 
 
