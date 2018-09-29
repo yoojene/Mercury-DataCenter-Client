@@ -46,6 +46,10 @@ export class NewDataComponent implements OnInit {
     phone: new FormControl('', [Validators.required]),
     nationality: new FormControl('', [Validators.required])
   };
+  // Deep copy ??????
+  originCustomer = Object.assign({}, this.customer)
+
+  // ===================
 
   // AIRLINE
   cabinList = ['经济舱', '头等舱', '商务舱'];
@@ -124,11 +128,21 @@ export class NewDataComponent implements OnInit {
     departureDate: new FormControl(moment(''))
   };
 
+  isProcessing = 'null'  // 'null' / 'yes' / 'no'
+  processResult = '' // 'success' / 'fail' / ''
+
   constructor(private utilityService: UtilityService,
     private httpService: HttpService) {
   }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  hideProcessResult() {
+    let self = this
+    setTimeout(() => {
+      self.isProcessing = 'null'
+      self.processResult = ''
+    }, 3000);
   }
 
   // ==== CUSTOMER ====
@@ -172,6 +186,7 @@ export class NewDataComponent implements OnInit {
   //==== Handle Save Button Click ====
   saveCustomer() {
     let self = this;
+    this.isProcessing = 'yes'
     let customer = {
       id: this.utilityService.generateID('customers'),
       name: this.customer.name.value,
@@ -193,11 +208,20 @@ export class NewDataComponent implements OnInit {
       (response: PostResponse) => {
         console.log(response);
         if (response.code == 200) {
-          alert('ok');
+          self.isProcessing = 'no'
+          self.processResult = 'success'
+          self.hideProcessResult()
+        } else {
+          self.isProcessing = 'no';
+          self.processResult = 'fail'
+          self.hideProcessResult()
         }
       },
       error => {
         console.log(error);
+        self.isProcessing = 'no';
+        self.processResult = 'fail'
+        self.hideProcessResult()
       }
     );
   }

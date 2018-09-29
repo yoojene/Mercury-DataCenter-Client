@@ -15,7 +15,14 @@
 .form-title {
   display: flex;
   justify-content: center;
-  i{
-    margin-right: 1rem;
+  i {
+    margin-right: .5rem;
+  }
+}
+
+.process-result-box {
+  display: flex;
+  i {
+    margin-right: .2rem;
   }
 }
