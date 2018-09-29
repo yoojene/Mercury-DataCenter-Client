@@ -1,13 +1,31 @@
 <div class="data-box bg-light">
   <div class="container">
     <div class="row">
+      <div class="col-12 text-center">
+        <p class="lead mb-2">Every form below is single.</p>
+        <p class="lead mb-4">Please click save button when finish editing any form, so you can complete adding a new
+          data into system.</p>
+      </div>
+    </div>
+    <!--==== Forms ====-->
+    <div class="row">
       <div class="col-6 mb-4">
         <!--==== CUSTOMER ====-->
         <mat-card class="px-5">
-          <h4 class="text-center">Customer</h4>
+          <h4 class="text-center form-title">
+            <i class="material-icons">
+              account_circle
+            </i>
+            Customer
+          </h4>
           <div class="form-container">
             <mat-form-field>
               <input matInput placeholder="Full Name" [formControl]="customer.name" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput [matDatepicker]="dp0" placeholder="Birthday" required [formControl]="customer.birthday">
+              <mat-datepicker-toggle matSuffix [for]="dp0"></mat-datepicker-toggle>
+              <mat-datepicker #dp0 disabled="false"></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
               <input matInput placeholder="Email" [formControl]="customer.email" required>
@@ -24,7 +42,7 @@
               </mat-select>
             </mat-form-field>
             <div class="mt-2 text-right">
-              <button mat-raised-button color="primary" class="" [disabled]="customer.name.invalid || customer.email.invalid || customer.phone.invalid || customer.nationality.invalid"
+              <button mat-raised-button color="primary" class="" [disabled]="customer.name.invalid || customer.birthday.invalid || customer.email.invalid || customer.phone.invalid || customer.nationality.invalid"
                 (click)="saveCustomer()">
                 <i class="material-icons mr-2">save_alt</i>
                 Save
@@ -36,7 +54,10 @@
       <!--==== AIRLINE ====-->
       <div class="col-6 mb-4">
         <mat-card class="px-5">
-          <h4 class="text-center">Airline</h4>
+          <h4 class="text-center form-title">
+            <i class="material-icons">local_airport</i>
+            Airline
+          </h4>
           <div class="form-container">
             <mat-form-field>
               <input matInput placeholder="Airline Name" [formControl]="airline.name" required>
@@ -69,7 +90,10 @@
       <!--==== VEHICLE ====-->
       <div class="col-6 mb-4">
         <mat-card class="px-5">
-          <h4 class="text-center">Vehicle</h4>
+          <h4 class="text-center form-title">
+            <i class="material-icons">airport_shuttle</i>
+            Vehicle
+          </h4>
           <div class="form-container">
             <mat-form-field class="w-100">
               <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider" (selectionChange)="onVehicleProviderChange($event)">
@@ -91,7 +115,8 @@
               <mat-datepicker #dp2 disabled="false"></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="number" min="1" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats" required>
+              <input type="number" min="1" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats"
+                required>
             </mat-form-field>
             <mat-form-field class="w-100">
               <input type="number" min="1" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
@@ -109,7 +134,10 @@
       <!--==== HOTEL ====-->
       <div class="col-6 mb-4">
         <mat-card class="px-5">
-          <h4 class="text-center">Hotel</h4>
+          <h4 class="text-center form-title">
+            <i class="material-icons">hotel</i>
+            Hotel
+          </h4>
           <div class="form-container">
             <mat-form-field class="w-100">
               <mat-select placeholder="Hotel Name *" [formControl]="hotel.name" (selectionChange)="onHotelNameChange($event)">
@@ -127,7 +155,8 @@
               <mat-datepicker #dp4 disabled="false"></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input type="number" min="1" matInput placeholder="Number of Rooms" [formControl]="hotel.numOfRooms" required>
+              <input type="number" min="1" matInput placeholder="Number of Rooms" [formControl]="hotel.numOfRooms"
+                required>
             </mat-form-field>
             <mat-form-field class="w-100">
               <input type="number" min="1" matInput placeholder="Days for stay" [formControl]="hotel.days" required>
@@ -145,7 +174,10 @@
       <!--==== SHIP ====-->
       <div class="col-6 mb-4">
         <mat-card class="px-5">
-          <h4 class="text-center">Ship</h4>
+          <h4 class="text-center form-title">
+            <i class="material-icons">directions_boat</i>
+            Ship
+          </h4>
           <div class="form-container">
             <mat-form-field class="w-100">
               <mat-select placeholder="Ship Provider *" [formControl]="ship.provider" (selectionChange)="onShipProviderChange($event)">

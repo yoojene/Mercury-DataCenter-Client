@@ -1,0 +1,5 @@
+{
+  "hostPrefix": "http://localhost/MercuryDataCenterServer/",
+  "customersUrl": "customers",
+  "airlineUrl": "airlines"
+}

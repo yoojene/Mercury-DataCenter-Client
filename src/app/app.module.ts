@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from "angular-highcharts";
+import { HttpClientModule } from "@angular/common/http";
+
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from "@angular/material";
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -57,6 +60,7 @@ import { SettingsComponent } from './home/settings/settings.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ChartModule,
+    HttpClientModule,
     MatButtonModule,
     MatCheckboxModule,
     MatGridListModule,
@@ -72,7 +76,8 @@ import { SettingsComponent } from './home/settings/settings.component';
     MatTableModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
