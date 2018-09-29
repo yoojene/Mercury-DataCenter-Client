@@ -26,4 +26,8 @@ export class HttpService {
     return this.http.post(this.host + 'api/add/' + tableName, data, httpOptions)
   }
 
+  fetchAllMetaData() {
+    return this.http.get(this.host + 'get-meta-data')
+  }
+
 }

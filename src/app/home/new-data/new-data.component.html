@@ -1,238 +1,317 @@
 <div class="data-box bg-light">
   <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <p class="lead mb-2">Every form below is single.</p>
-        <p class="lead mb-4">Please click save button when finish editing any form, so you can complete adding a new
-          data into system.</p>
-      </div>
-    </div>
-    <!--==== Forms ====-->
-    <div class="row">
-      <div class="col-6 mb-4">
-        <!--==== CUSTOMER ====-->
-        <mat-card class="px-5">
-          <h4 class="text-center form-title">
-            <i class="material-icons">
-              account_circle
-            </i>
-            Customer
-          </h4>
-          <div class="form-container">
-            <mat-form-field>
-              <input matInput placeholder="Full Name" [formControl]="customer.name" required>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput [matDatepicker]="dp0" placeholder="Birthday" required [formControl]="customer.birthday">
-              <mat-datepicker-toggle matSuffix [for]="dp0"></mat-datepicker-toggle>
-              <mat-datepicker #dp0 disabled="false"></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="Email" [formControl]="customer.email" required>
-              <mat-error *ngIf="customer.email.invalid">{{getEmailErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="Phone" [formControl]="customer.phone" required>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-select placeholder="Nationality *" [formControl]="customer.nationality">
-                <mat-option *ngFor="let nationality of nationalityList" [value]="nationality">
-                  {{nationality}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div class="container mt-2">
-              <div class="row">
-                <div class="col pl-0">
-                  <div class="processing-box" *ngIf="isProcessing=='yes'">
-                    <small>System is saving data, please wait a moment</small>
-                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <div class="row mb-4 mt-2 justify-content-center">
+      <div class="col-9 text-center">
+        <div class="mark-box" *ngIf="isProcessing=='yes' || processResult!=''"></div>
+        <mat-tab-group mat-stretch-tabs class="mt-4 tab-group">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons mr-2">account_circle</i>
+              <span class="lead">Customer</span>
+            </ng-template>
+            <mat-card class="px-5 my-5">
+              <h4 class="text-center form-title">
+                <i class="material-icons">
+                  account_circle
+                </i>
+                Customer
+              </h4>
+              <div class="form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Full Name" [formControl]="customer.name" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="dp0" placeholder="Birthday" required [formControl]="customer.birthday">
+                  <mat-datepicker-toggle matSuffix [for]="dp0"></mat-datepicker-toggle>
+                  <mat-datepicker #dp0 disabled="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Email" [formControl]="customer.email" required>
+                  <mat-error *ngIf="customer.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Phone" [formControl]="customer.phone" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-select placeholder="Nationality *" [formControl]="customer.nationality">
+                    <mat-option *ngFor="let nationality of nationalityList" [value]="nationality">
+                      {{nationality}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="row">
+                  <div class="col">
+                    <div class="processing-box" *ngIf="isProcessing=='yes'">
+                      <small>System is saving data, please wait a moment</small>
+                      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div>
+                    <div class="process-result-box" *ngIf="isProcessing=='no'">
+                      <i class="material-icons" [ngClass]="{'text-success': processResult=='success','text-danger':processResult=='fail'}">
+                        {{processResult=='success'?'check_circle':'warning'}}
+                      </i>
+                      <small>{{processResult=='success'?'Save data successfully !':'Sorry, fail to save data. Please
+                        try
+                        again later.'}}</small>
+                    </div>
                   </div>
-                  <div class="process-result-box" *ngIf="isProcessing=='no'">
-                    <i class="material-icons" [ngClass]="{'text-success': processResult=='success','text-danger':processResult=='fail'}">
-                      {{processResult=='success'?'check_circle':'warning'}}
-                    </i>
-                    <small>{{processResult=='success'?'Save data successfully !':'Sorry, fail to save data. Please try
-                      again later.'}}</small>
+                  <div class="col-3">
+                    <button mat-raised-button color="primary" [disabled]="customer.name.invalid || customer.birthday.invalid || customer.email.invalid || customer.phone.invalid || customer.nationality.invalid || processResult!='' || isProcessing=='yes'"
+                      (click)="saveCustomer()">
+                      <i class="material-icons mr-2">save_alt</i>
+                      Save
+                    </button>
                   </div>
-                </div>
-                <div class="col-3">
-                  <button mat-raised-button color="primary" class="" [disabled]="customer.name.invalid || customer.birthday.invalid || customer.email.invalid || customer.phone.invalid || customer.nationality.invalid || processResult!='' || isProcessing=='yes'"
-                    (click)="saveCustomer()">
-                    <i class="material-icons mr-2">save_alt</i>
-                    Save
-                  </button>
                 </div>
               </div>
-            </div>
-          </div>
-        </mat-card>
-      </div>
-      <!--==== AIRLINE ====-->
-      <div class="col-6 mb-4">
-        <mat-card class="px-5">
-          <h4 class="text-center form-title">
-            <i class="material-icons">local_airport</i>
-            Airline
-          </h4>
-          <div class="form-container">
-            <mat-form-field>
-              <input matInput placeholder="Airline Name" [formControl]="airline.name" required>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="Round Trip" [formControl]="airline.roundTrip" required>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput [matDatepicker]="dp" placeholder="Departure Date" required [formControl]="airline.departureDate">
-              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-              <mat-datepicker #dp disabled="false"></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-select placeholder="Cabin *" [formControl]="airline.cabin">
-                <mat-option *ngFor="let cabin of cabinList" [value]="cabin">
-                  {{cabin}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div class="mt-2 text-right">
-              <button mat-raised-button color="primary" class="" [disabled]="airline.name.invalid || airline.roundTrip.invalid || airline.departureDate.invalid || airline.cabin.invalid"
-                (click)="saveAirline()">
-                <i class="material-icons mr-2">save_alt</i>
-                Save
-              </button>
-            </div>
-          </div>
-        </mat-card>
-      </div>
-      <!--==== VEHICLE ====-->
-      <div class="col-6 mb-4">
-        <mat-card class="px-5">
-          <h4 class="text-center form-title">
-            <i class="material-icons">airport_shuttle</i>
-            Vehicle
-          </h4>
-          <div class="form-container">
-            <mat-form-field class="w-100">
-              <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider" (selectionChange)="onVehicleProviderChange($event)">
-                <mat-option *ngFor="let item of vehicleProviderList; let i=index" [value]="item.name">
-                  {{item.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type" [disabled]="vehicle.provider.value==''">
-                <mat-option *ngFor="let item of vehicleProviderList[vehicleProviderIndex].type" [value]="item">
-                  {{item}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input matInput [matDatepicker]="dp2" placeholder="Subscribe Date" required [formControl]="vehicle.subscribeDate">
-              <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
-              <mat-datepicker #dp2 disabled="false"></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="number" min="1" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats"
-                required>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="number" min="1" matInput placeholder="Days for rent" [formControl]="vehicle.days" required>
-            </mat-form-field>
-            <div class="text-right mt-2">
-              <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
-                (click)="saveVehicle()">
-                <i class="material-icons mr-2">save_alt</i>
-                Save
-              </button>
-            </div>
-          </div>
-        </mat-card>
-      </div>
-      <!--==== HOTEL ====-->
-      <div class="col-6 mb-4">
-        <mat-card class="px-5">
-          <h4 class="text-center form-title">
-            <i class="material-icons">hotel</i>
-            Hotel
-          </h4>
-          <div class="form-container">
-            <mat-form-field class="w-100">
-              <mat-select placeholder="Hotel Name *" [formControl]="hotel.name" (selectionChange)="onHotelNameChange($event)">
-                <mat-option *ngFor="let item of hotelList; let i=index" [value]="item.name">
-                  {{item.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="Address" [formControl]="hotel.address" readonly required>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input matInput [matDatepicker]="dp4" placeholder="Check-in Date" required [formControl]="hotel.checkInDate">
-              <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
-              <mat-datepicker #dp4 disabled="false"></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="number" min="1" matInput placeholder="Number of Rooms" [formControl]="hotel.numOfRooms"
-                required>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="number" min="1" matInput placeholder="Days for stay" [formControl]="hotel.days" required>
-            </mat-form-field>
-            <div class="text-right mt-2">
-              <button mat-raised-button color="primary" class="" [disabled]="hotel.name.invalid || hotel.checkInDate.invalid || hotel.numOfRooms.invalid || hotel.days.invalid"
-                (click)="saveHotel()">
-                <i class="material-icons mr-2">save_alt</i>
-                Save
-              </button>
-            </div>
-          </div>
-        </mat-card>
-      </div>
-      <!--==== SHIP ====-->
-      <div class="col-6 mb-4">
-        <mat-card class="px-5">
-          <h4 class="text-center form-title">
-            <i class="material-icons">directions_boat</i>
-            Ship
-          </h4>
-          <div class="form-container">
-            <mat-form-field class="w-100">
-              <mat-select placeholder="Ship Provider *" [formControl]="ship.provider" (selectionChange)="onShipProviderChange($event)">
-                <mat-option *ngFor="let item of shipProviderList; let i=index" [value]="item.name">
-                  {{item.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <mat-select placeholder="Ship Type *" [formControl]="ship.type" [disabled]="ship.provider.value==''">
-                <mat-option *ngFor="let item of shipProviderList[shipProviderIndex].type" [value]="item">
-                  {{item}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input matInput [matDatepicker]="dp3" placeholder="Departure Date" required [formControl]="ship.departureDate">
-              <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-              <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="Departure Port" [formControl]="ship.departurePort" required>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="Journey Type" [formControl]="ship.journeyType" required>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="Journey Description" [formControl]="ship.journeyDesc" required>
-            </mat-form-field>
-            <div class="text-right mt-2">
-              <button mat-raised-button color="primary" class="" [disabled]="ship.provider.invalid || ship.type.invalid || ship.journeyType.invalid || ship.journeyDesc.invalid || ship.departureDate.invalid || ship.departurePort.invalid"
-                (click)="saveShip()">
-                <i class="material-icons mr-2">save_alt</i>
-                Save
-              </button>
-            </div>
-          </div>
-        </mat-card>
+            </mat-card>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons mr-2">local_airport</i>
+              <span class="lead">Airline</span>
+            </ng-template>
+            <mat-card class="px-5 my-5">
+              <h4 class="text-center form-title">
+                <i class="material-icons">local_airport</i>
+                Airline
+              </h4>
+              <div class="form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Airline Name" [formControl]="airline.name" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Round Trip" [formControl]="airline.roundTrip" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="dp" placeholder="Departure Date" required [formControl]="airline.departureDate">
+                  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                  <mat-datepicker #dp disabled="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-select placeholder="Cabin *" [formControl]="airline.cabin">
+                    <mat-option *ngFor="let cabin of cabinList" [value]="cabin">
+                      {{cabin}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="row">
+                  <div class="col pl-0">
+                    <div class="processing-box" *ngIf="isProcessing=='yes'">
+                      <small>System is saving data, please wait a moment</small>
+                      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div>
+                    <div class="process-result-box" *ngIf="isProcessing=='no'">
+                      <i class="material-icons" [ngClass]="{'text-success': processResult=='success','text-danger':processResult=='fail'}">
+                        {{processResult=='success'?'check_circle':'warning'}}
+                      </i>
+                      <small>{{processResult=='success'?'Save data successfully !':'Sorry, fail to save data. Please
+                        try
+                        again later.'}}</small>
+                    </div>
+                  </div>
+                  <div class="col-3 text-right pr-0">
+                    <button mat-raised-button color="primary" class="" [disabled]="airline.name.invalid || airline.roundTrip.invalid || airline.departureDate.invalid || airline.cabin.invalid"
+                      (click)="saveAirline()">
+                      <i class="material-icons mr-2">save_alt</i>
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons mr-2">airport_shuttle</i>
+              <span class="lead">Vehicle</span>
+            </ng-template>
+            <mat-card class="px-5 my-5">
+              <h4 class="text-center form-title">
+                <i class="material-icons mr-2">airport_shuttle</i>
+                Vehicle
+              </h4>
+              <div class="form-container">
+                <mat-form-field class="w-100">
+                  <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider" (selectionChange)="onVehicleProviderChange($event)">
+                    <mat-option *ngFor="let item of vehicleProviderList; let i=index" [value]="item.name">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <mat-select placeholder="Vehicle Type *" [formControl]="vehicle.type" [disabled]="vehicle.provider.value==''">
+                    <mat-option *ngFor="let item of vehicleProviderList[vehicleProviderIndex].type" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input matInput [matDatepicker]="dp2" placeholder="Subscribe Date" required [formControl]="vehicle.subscribeDate">
+                  <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+                  <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="number" min="1" matInput placeholder="Number of Seats" [formControl]="vehicle.numOfSeats"
+                    required>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="number" min="1" matInput placeholder="Days for rent" [formControl]="vehicle.days"
+                    required>
+                </mat-form-field>
+                <div class="row">
+                  <div class="col pl-0">
+                    <div class="processing-box" *ngIf="isProcessing=='yes'">
+                      <small>System is saving data, please wait a moment</small>
+                      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div>
+                    <div class="process-result-box" *ngIf="isProcessing=='no'">
+                      <i class="material-icons" [ngClass]="{'text-success': processResult=='success','text-danger':processResult=='fail'}">
+                        {{processResult=='success'?'check_circle':'warning'}}
+                      </i>
+                      <small>{{processResult=='success'?'Save data successfully !':'Sorry, fail to save data. Please
+                        try
+                        again later.'}}</small>
+                    </div>
+                  </div>
+                  <div class="col-3 text-right pr-0">
+                    <button mat-raised-button color="primary" class="" [disabled]="vehicle.provider.invalid || vehicle.type.invalid || vehicle.numOfSeats.invalid || vehicle.subscribeDate.invalid || vehicle.days.invalid"
+                      (click)="saveVehicle()">
+                      <i class="material-icons mr-2">save_alt</i>
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons mr-2">directions_boat</i>
+              <span class="lead">Ship</span>
+            </ng-template>
+            <mat-card class="px-5 my-5">
+              <h4 class="text-center form-title">
+                <i class="material-icons">directions_boat</i>
+                Ship
+              </h4>
+              <div class="form-container">
+                <mat-form-field class="w-100">
+                  <mat-select placeholder="Ship Provider *" [formControl]="ship.provider" (selectionChange)="onShipProviderChange($event)">
+                    <mat-option *ngFor="let item of shipProviderList; let i=index" [value]="item.name">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <mat-select placeholder="Ship Type *" [formControl]="ship.type" [disabled]="ship.provider.value==''">
+                    <mat-option *ngFor="let item of shipProviderList[shipProviderIndex].type" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input matInput [matDatepicker]="dp3" placeholder="Departure Date" required [formControl]="ship.departureDate">
+                  <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="text" matInput placeholder="Departure Port" [formControl]="ship.departurePort" required>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="text" matInput placeholder="Journey Type" [formControl]="ship.journeyType" required>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="text" matInput placeholder="Journey Description" [formControl]="ship.journeyDesc"
+                    required>
+                </mat-form-field>
+                <div class="row">
+                  <div class="col pl-0">
+                    <div class="processing-box" *ngIf="isProcessing=='yes'">
+                      <small>System is saving data, please wait a moment</small>
+                      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div>
+                    <div class="process-result-box" *ngIf="isProcessing=='no'">
+                      <i class="material-icons" [ngClass]="{'text-success': processResult=='success','text-danger':processResult=='fail'}">
+                        {{processResult=='success'?'check_circle':'warning'}}
+                      </i>
+                      <small>{{processResult=='success'?'Save data successfully !':'Sorry, fail to save data. Please
+                        try
+                        again later.'}}</small>
+                    </div>
+                  </div>
+                  <div class="col-3 text-right pr-0">
+                    <button mat-raised-button color="primary" class="" [disabled]="ship.provider.invalid || ship.type.invalid || ship.journeyType.invalid || ship.journeyDesc.invalid || ship.departureDate.invalid || ship.departurePort.invalid"
+                      (click)="saveShip()">
+                      <i class="material-icons mr-2">save_alt</i>
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons mr-2">hotel</i>
+              <span class="lead">Hotel</span>
+            </ng-template>
+            <mat-card class="px-5 my-5">
+              <h4 class="text-center form-title">
+                <i class="material-icons">hotel</i>
+                Hotel
+              </h4>
+              <div class="form-container">
+                <mat-form-field class="w-100">
+                  <mat-select placeholder="Hotel Name *" [formControl]="hotel.name" (selectionChange)="onHotelNameChange($event)">
+                    <mat-option *ngFor="let item of hotelList; let i=index" [value]="item.name">
+                      {{item.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="text" matInput placeholder="Address" [formControl]="hotel.address" readonly required>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input matInput [matDatepicker]="dp4" placeholder="Check-in Date" required [formControl]="hotel.checkInDate">
+                  <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+                  <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="number" min="1" matInput placeholder="Number of Rooms" [formControl]="hotel.numOfRooms"
+                    required>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <input type="number" min="1" matInput placeholder="Days for stay" [formControl]="hotel.days" required>
+                </mat-form-field>
+                <div class="row">
+                  <div class="col pl-0">
+                    <div class="processing-box" *ngIf="isProcessing=='yes'">
+                      <small>System is saving data, please wait a moment</small>
+                      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div>
+                    <div class="process-result-box" *ngIf="isProcessing=='no'">
+                      <i class="material-icons" [ngClass]="{'text-success': processResult=='success','text-danger':processResult=='fail'}">
+                        {{processResult=='success'?'check_circle':'warning'}}
+                      </i>
+                      <small>{{processResult=='success'?'Save data successfully !':'Sorry, fail to save data. Please
+                        try
+                        again later.'}}</small>
+                    </div>
+                  </div>
+                  <div class="col-3 text-right pr-0">
+                    <button mat-raised-button color="primary" class="" [disabled]="hotel.name.invalid || hotel.checkInDate.invalid || hotel.numOfRooms.invalid || hotel.days.invalid"
+                      (click)="saveHotel()">
+                      <i class="material-icons mr-2">save_alt</i>
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
   </div>

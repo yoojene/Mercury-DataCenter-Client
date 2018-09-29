@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { HttpService } from "../../service/http.service";
 
 declare var $: any;
 
@@ -51,9 +52,12 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
   showHotelEditor = false
 
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.fetchAllMetaData().subscribe(response => {
+      console.log(response)
+    })
   }
 
   ngAfterViewInit() {

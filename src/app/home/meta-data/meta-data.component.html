@@ -4,7 +4,8 @@
       <div class="col-12 mb-3 py-2 text-center">
         <p class="lead py-0 my-0">
           DO NOT FORGET to click the <strong class="text-danger">Save
-            All Data</strong> button at the <strong class="text-danger">bottom right</strong> of this page when you finish editing all the
+            All Data</strong> button at the <strong class="text-danger">bottom right</strong> of this page when you
+          finish editing all the
           meta
           data !
         </p>
@@ -255,13 +256,21 @@
         </mat-card>
       </div>
       <!-- ====== SAVE BUTTON ======-->
-      <div class="col-12 mt-4 text-right">
-        <button mat-raised-button color="warn" (click)="saveAllData()">
-          <i class="material-icons mr-2">
-            save_alt
-          </i>
-          Save All Data
-        </button>
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col">
+            <small>Saving all the meta data, please wait a moment</small>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </div>
+          <div class="col-3 text-right">
+            <button mat-raised-button color="warn" (click)="saveAllData()">
+              <i class="material-icons mr-2">
+                save_alt
+              </i>
+              Save All Data
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

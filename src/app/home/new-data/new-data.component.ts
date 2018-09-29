@@ -206,7 +206,6 @@ export class NewDataComponent implements OnInit {
 
     this.httpService.saveNewDataAPI('customers', data).subscribe(
       (response: PostResponse) => {
-        console.log(response);
         if (response.code == 200) {
           self.isProcessing = 'no'
           self.processResult = 'success'
@@ -218,7 +217,6 @@ export class NewDataComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
         self.isProcessing = 'no';
         self.processResult = 'fail'
         self.hideProcessResult()
@@ -227,6 +225,8 @@ export class NewDataComponent implements OnInit {
   }
 
   saveAirline() {
+    let self = this;
+    this.isProcessing = 'yes'
     let airline = {
       id: this.utilityService.generateID('airlines'),
       name: this.airline.name.value,
@@ -245,19 +245,28 @@ export class NewDataComponent implements OnInit {
 
     this.httpService.saveNewDataAPI('airlines', data).subscribe(
       (response: PostResponse) => {
-        console.log(response);
         if (response.code == 200) {
-          alert('ok');
+          self.isProcessing = 'no'
+          self.processResult = 'success'
+          self.hideProcessResult()
+        } else {
+          self.isProcessing = 'no';
+          self.processResult = 'fail'
+          self.hideProcessResult()
         }
       },
       error => {
-        console.log(error);
+        self.isProcessing = 'no';
+        self.processResult = 'fail'
+        self.hideProcessResult()
       }
     );
 
   }
 
   saveVehicle() {
+    let self = this;
+    this.isProcessing = 'yes'
     let vehicle = {
       id: this.utilityService.generateID('vehicles'),
       provider: this.vehicle.provider.value,
@@ -277,18 +286,27 @@ export class NewDataComponent implements OnInit {
 
     this.httpService.saveNewDataAPI('vehicles', data).subscribe(
       (response: PostResponse) => {
-        console.log(response);
         if (response.code == 200) {
-          alert('ok');
+          self.isProcessing = 'no'
+          self.processResult = 'success'
+          self.hideProcessResult()
+        } else {
+          self.isProcessing = 'no';
+          self.processResult = 'fail'
+          self.hideProcessResult()
         }
       },
       error => {
-        console.log(error);
+        self.isProcessing = 'no';
+        self.processResult = 'fail'
+        self.hideProcessResult()
       }
     );
   }
 
   saveHotel() {
+    let self = this;
+    this.isProcessing = 'yes'
     let hotel = {
       id: this.utilityService.generateID('hotels'),
       name: this.hotel.name.value,
@@ -310,16 +328,26 @@ export class NewDataComponent implements OnInit {
       (response: PostResponse) => {
         console.log(response);
         if (response.code == 200) {
-          alert('ok');
+          self.isProcessing = 'no'
+          self.processResult = 'success'
+          self.hideProcessResult()
+        } else {
+          self.isProcessing = 'no';
+          self.processResult = 'fail'
+          self.hideProcessResult()
         }
       },
       error => {
-        console.log(error);
+        self.isProcessing = 'no';
+        self.processResult = 'fail'
+        self.hideProcessResult()
       }
     );
   }
 
   saveShip() {
+    let self = this;
+    this.isProcessing = 'yes'
     let ship = {
       id: this.utilityService.generateID('ships'),
       provider: this.ship.provider.value,
@@ -342,11 +370,19 @@ export class NewDataComponent implements OnInit {
       (response: PostResponse) => {
         console.log(response);
         if (response.code == 200) {
-          alert('ok');
+          self.isProcessing = 'no'
+          self.processResult = 'success'
+          self.hideProcessResult()
+        } else {
+          self.isProcessing = 'no';
+          self.processResult = 'fail'
+          self.hideProcessResult()
         }
       },
       error => {
-        console.log(error);
+        self.isProcessing = 'no';
+        self.processResult = 'fail'
+        self.hideProcessResult()
       }
     );
   }
