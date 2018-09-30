@@ -80,7 +80,6 @@
               </h4>
               <div class="form-container">
                 <mat-form-field>
-                  <!-- <input matInput placeholder="Airline Name" [formControl]="airline.name" required> -->
                   <mat-select placeholder="Airline Name" [formControl]="airline.name" required>
                     <mat-option *ngFor="let airline of airlineList" [value]="airline">
                       {{airline}}

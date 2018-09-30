@@ -204,8 +204,13 @@
           <div class="mt-3 w-100 px-3">
             <div class="row mb-2 py-1 hotel-row" *ngFor="let item of hotelList; let i=index">
               <div class="col-1">{{i+1}}</div>
-              <div class="col-4">{{item.name}}</div>
-              <div class="col">{{item.address}}</div>
+              <div class="col-4" style="display:flex">
+                <i class="material-icons mr-2">home</i>{{item.name}}
+              </div>
+              <div class="col" style="display:flex">
+                <i class="material-icons mr-2">pin_drop</i>
+                {{item.address}}
+              </div>
             </div>
             <!-- hotel editor: start -->
             <div class="row bg-light mt-4 py-3" [hidden]="!showHotelEditor">
@@ -259,11 +264,11 @@
       <div class="container mt-4">
         <div class="row">
           <div class="col">
-            <small>Saving all the meta data, please wait a moment</small>
+            <div>Saving all the meta data, please wait a moment</div>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
           </div>
           <div class="col-3 text-right">
-            <button mat-raised-button color="warn" (click)="saveAllData()">
+            <button mat-raised-button color="warn" (click)="saveAllData()" class="py-1 px-4">
               <i class="material-icons mr-2">
                 save_alt
               </i>

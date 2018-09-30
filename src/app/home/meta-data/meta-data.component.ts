@@ -1,5 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpService } from "../../service/http.service";
+import {
+  MetaHotelProvider,
+  MetaVehicleProvider,
+  MetaShipProvider
+} from "../../module/MetaData";
 
 declare var $: any;
 
@@ -8,9 +13,16 @@ declare var $: any;
   templateUrl: './meta-data.component.html',
   styleUrls: ['./meta-data.component.scss']
 })
-export class MetaDataComponent implements OnInit, AfterViewInit {
+export class MetaDataComponent implements OnInit {
 
-  finalData = {}
+  finalData = {
+    nationalities: [],
+    cabin: [],
+    airline: [],
+    vehicleProvider: [],
+    shipProvider: [],
+    hotel: []
+  }
 
   nationalityList = []
   nationality = ''
@@ -56,12 +68,13 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.httpService.fetchAllMetaData().subscribe(response => {
-      console.log(response)
+      this.airlineList = response['airline']
+      this.cabinList = response['cabin']
+      this.nationalityList = response['nationalities']
+      this.hotelList = response['hotel']
+      this.vehicleProviderList = response['vehicleProvider']
+      this.shipProviderList = response['shipProvider']
     })
-  }
-
-  ngAfterViewInit() {
-
   }
 
   nationalityOkBtn() {
@@ -203,7 +216,22 @@ export class MetaDataComponent implements OnInit, AfterViewInit {
   }
 
   saveAllData() {
-    alert('saving all data ...')
+    this.finalData.nationalities = this.nationalityList
+    this.finalData.cabin = this.cabinList
+    this.finalData.airline = this.airlineList
+    this.finalData.vehicleProvider = this.vehicleProviderList
+    this.finalData.shipProvider = this.shipProviderList
+    this.finalData.hotel = this.hotelList
+    console.log(this.finalData)
+    let data = JSON.stringify(this.finalData)
+    this.httpService.postAllMetaData(data).subscribe(
+      response => {
+        console.log(response)
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
 }

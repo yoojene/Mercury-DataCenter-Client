@@ -30,4 +30,8 @@ export class HttpService {
     return this.http.get(this.host + 'get-meta-data')
   }
 
+  postAllMetaData(data) {
+    return this.http.post(this.host + 'update-meta-data', data, httpOptions)
+  }
+
 }
