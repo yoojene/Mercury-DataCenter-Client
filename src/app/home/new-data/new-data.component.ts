@@ -5,7 +5,14 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { UtilityService } from '../../service/utility.service';
 import { HttpService } from '../../service/http.service';
 import { Http, URLSearchParams } from '@angular/http';
+
+// Module Interface
 import { PostResponse } from "../../module/PostResponse";
+import {
+  MetaHotelProvider,
+  MetaVehicleProvider,
+  MetaShipProvider
+} from "../../module/MetaData";
 
 import * as _moment from 'moment';
 
@@ -37,7 +44,7 @@ export const MY_FORMATS = {
 
 export class NewDataComponent implements OnInit {
   // CUSTOMER
-  nationalityList = ['China', 'USA', 'Japan', 'Taiwan', 'HangKong', 'Canda', 'Britihsh'];
+  nationalityList: [String];
   customer = {
     id: '',
     name: new FormControl('', [Validators.required]),
@@ -52,7 +59,8 @@ export class NewDataComponent implements OnInit {
   // ===================
 
   // AIRLINE
-  cabinList = ['经济舱', '头等舱', '商务舱'];
+  cabinList: [String];
+  airlineList: [String];
   airline = {
     id: '',
     name: new FormControl('', [Validators.required]),
@@ -63,17 +71,7 @@ export class NewDataComponent implements OnInit {
 
   // VEHICLE
   vehicleProviderIndex = 0;
-  vehicleProviderList = [
-    {
-      name: 'Mercury',
-      type: ['SUV', 'Sprinter']
-    },
-    {
-      name: 'Other',
-      type: ['越野车', '商务车']
-    }
-  ];
-
+  vehicleProviderList: [MetaVehicleProvider] = [{ name: 'vehicle provider name', type: ['vehicle type'] }];
   vehicle = {
     id: '',
     provider: new FormControl('', [Validators.required]),
@@ -87,16 +85,7 @@ export class NewDataComponent implements OnInit {
 
   // HOTEL
   hotelIndex = -1;
-  hotelList = [
-    {
-      name: 'Radisson Hotel Seattle Airport',
-      address: '1818 International Blvd, Seattle'
-    },
-    {
-      name: 'Red Lion Hotel Seattle Airport',
-      address: '18220 International Boulevard, Seattle'
-    }
-  ];
+  hotelList: [MetaHotelProvider] = [{ name: 'hotel name', address: 'hotel address' }];
   hotel = {
     id: '',
     name: new FormControl('', [Validators.required]),
@@ -108,16 +97,7 @@ export class NewDataComponent implements OnInit {
 
   // SHIP
   shipProviderIndex = 0;
-  shipProviderList = [
-    {
-      name: 'Ship 1',
-      type: ['t1', 't2', 't3']
-    },
-    {
-      name: 'Ship 2',
-      type: ['p1', 'p2']
-    }
-  ];
+  shipProviderList: [MetaShipProvider] = [{ name: 'Ship provider', type: ['ship type'] }];
   ship = {
     id: '',
     provider: new FormControl('', [Validators.required]),
@@ -135,7 +115,22 @@ export class NewDataComponent implements OnInit {
     private httpService: HttpService) {
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    this.httpService.fetchAllMetaData().subscribe(
+      (response) => {
+        this.nationalityList = response['nationalities']
+        this.cabinList = response['cabin']
+        this.airlineList = response['airline']
+        this.hotelList = response['hotel']
+        this.vehicleProviderList = response['vehicleProvider']
+        this.shipProviderList = response['shipProvider']
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
 
   hideProcessResult() {
     let self = this
