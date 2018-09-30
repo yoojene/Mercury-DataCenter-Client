@@ -4,6 +4,7 @@
       <div class="col-9 text-center">
         <div class="mark-box" *ngIf="isProcessing=='yes' || processResult!=''"></div>
         <mat-tab-group mat-stretch-tabs class="mt-4 tab-group">
+          <!--==== Customer: start ====-->
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="material-icons mr-2">account_circle</i>
@@ -65,7 +66,8 @@
               </div>
             </mat-card>
           </mat-tab>
-
+          <!--==== Customer: end ====-->
+          <!--==== Airline: start ====-->
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="material-icons mr-2">local_airport</i>
@@ -78,7 +80,12 @@
               </h4>
               <div class="form-container">
                 <mat-form-field>
-                  <input matInput placeholder="Airline Name" [formControl]="airline.name" required>
+                  <!-- <input matInput placeholder="Airline Name" [formControl]="airline.name" required> -->
+                  <mat-select placeholder="Airline Name" [formControl]="airline.name" required>
+                    <mat-option *ngFor="let airline of airlineList" [value]="airline">
+                      {{airline}}
+                    </mat-option>
+                  </mat-select>
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput placeholder="Round Trip" [formControl]="airline.roundTrip" required>
@@ -121,7 +128,8 @@
               </div>
             </mat-card>
           </mat-tab>
-
+          <!--==== Airline: end ====-->
+          <!--==== Vehicle: start ====-->
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="material-icons mr-2">airport_shuttle</i>
@@ -186,6 +194,8 @@
               </div>
             </mat-card>
           </mat-tab>
+          <!--==== Vehicle: end ====-->
+          <!--==== Ship: start ====-->
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="material-icons mr-2">directions_boat</i>
@@ -252,6 +262,8 @@
               </div>
             </mat-card>
           </mat-tab>
+          <!--==== Ship: end ====-->
+          <!--==== Hotel: start ====-->
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="material-icons mr-2">hotel</i>
@@ -311,6 +323,7 @@
               </div>
             </mat-card>
           </mat-tab>
+          <!--==== Hotel: end ====-->
         </mat-tab-group>
       </div>
     </div>
