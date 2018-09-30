@@ -234,4 +234,41 @@ export class MetaDataComponent implements OnInit {
     )
   }
 
+  removeItem(targetIndex, listName) {
+    switch (listName) {
+      case 'nationalityList':
+        this.nationalityList = this.nationalityList.filter(function (item, index) {
+          return targetIndex != index
+        })
+        break;
+      case 'airlineList':
+        this.airlineList = this.airlineList.filter(function (item, index) {
+          return targetIndex != index
+        })
+        break;
+      case 'cabinList':
+        this.cabinList = this.cabinList.filter(function (item, index) {
+          return targetIndex != index
+        })
+        break;
+      case 'vehicleProviderList':
+        this.vehicleProviderList = this.vehicleProviderList.filter(function (item, index) {
+          return targetIndex != index
+        })
+        break;
+      case 'hotelList':
+        this.hotelList = this.hotelList.filter(function (item, index) {
+          return targetIndex != index
+        })
+        break;
+      case 'shipProviderList':
+        this.shipProviderList = this.shipProviderList.filter(function (item, index) {
+          return targetIndex != index
+        })
+        break;
+      default:
+        break;
+    }
+  }
+
 }
