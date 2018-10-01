@@ -310,13 +310,13 @@
               <div>Saving all the meta data, please wait a moment</div>
               <mat-progress-bar mode="indeterminate"></mat-progress-bar>
             </div>
-            <div class="saving-result-box lead" *ngIf="!isSaving && savingResult=='yes'">
+            <div class="saving-result-box lead" *ngIf="savingResult=='yes'">
               <i class="material-icons mr-2 text-success">
                 check_circle
               </i>
               Saving meta data successfully !
             </div>
-            <div class="saving-result-box lead" *ngIf="!isSaving && savingResult=='no'">
+            <div class="saving-result-box lead" *ngIf="savingResult=='no'">
               <i class="material-icons mr-2 text-warning">
                 warning
               </i>
