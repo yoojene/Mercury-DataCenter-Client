@@ -215,6 +215,10 @@ export class MetaDataComponent implements OnInit {
     this.showHotelEditor = false;
   }
 
+  cancelAllData() {
+    window.location.reload()
+  }
+
   saveAllData() {
     this.finalData.nationalities = this.nationalityList
     this.finalData.cabin = this.cabinList

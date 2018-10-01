@@ -13,7 +13,7 @@
       <!--====== NATIONALITY ======-->
       <div class="col-12 mb-3">
         <mat-card>
-          <h4 class="section-title">Nationality</h4>
+          <h4 class="section-title">Nationality <small class="ml-2 text-secondary">({{nationalityList.length}})</small></h4>
           <div class="mt-3 w-100">
             <span class="item-box" *ngFor="let item of nationalityList; let i=index">
               {{item}}
@@ -33,7 +33,7 @@
       <!--====== AIRLINE ======-->
       <div class="col-12 mb-3">
         <mat-card>
-          <h4 class="section-title">Airline</h4>
+          <h4 class="section-title">Airline <small class="ml-2 text-secondary">({{airlineList.length}})</small></h4>
           <div class="mt-3 w-100">
             <span class="item-box" *ngFor="let item of airlineList; let i=index">
               {{item}}
@@ -53,7 +53,7 @@
       <!--====== CABIN ======-->
       <div class="col-12 mb-3">
         <mat-card>
-          <h4 class="section-title">Cabin</h4>
+          <h4 class="section-title">Cabin <small class="ml-2 text-secondary">({{cabinList.length}})</small></h4>
           <div class="mt-3 w-100">
             <span class="item-box" *ngFor="let item of cabinList; let i=index">
               {{item}}
@@ -73,7 +73,7 @@
       <!--====== VEHICLE PROVIDER ======-->
       <div class="col-12 mb-3">
         <mat-card>
-          <h4 class="section-title">Vehicle Provider</h4>
+          <h4 class="section-title">Vehicle Provider <small class="ml-2 text-secondary">({{vehicleProviderList.length}})</small></h4>
           <div class="mt-3 w-100 px-3">
             <div class="row py-2 vehicle-row align-items-center" *ngFor="let item of vehicleProviderList; let i=index">
               <div class="col-1">{{i+1}}</div>
@@ -150,7 +150,7 @@
       <!--======== SHIP PROVIDER ==========-->
       <div class="col-12 mb-3">
         <mat-card>
-          <h4 class="section-title">Ship Provider</h4>
+          <h4 class="section-title">Ship Provider <small class="ml-2 text-secondary">({{shipProviderList.length}})</small></h4>
           <div class="mt-3 w-100 px-3">
             <div class="row py-2 ship-row align-items-center" *ngFor="let item of shipProviderList; let i=index">
               <div class="col-1">{{i+1}}</div>
@@ -225,7 +225,7 @@
       <!--======== HOTEL PROVIDER=========-->
       <div class="col-12">
         <mat-card>
-          <h4 class="section-title">Hotel</h4>
+          <h4 class="section-title">Hotel <small class="ml-2 text-secondary">({{hotelList.length}})</small></h4>
           <div class="mt-3 w-100 px-3">
             <div class="row mb-2 py-1 hotel-row" *ngFor="let item of hotelList; let i=index">
               <div class="col-1">{{i+1}}</div>
@@ -297,7 +297,15 @@
             <div>Saving all the meta data, please wait a moment</div>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
           </div>
-          <div class="col-3 text-right">
+          <div class="col-2 text-right">
+            <button mat-raised-button (click)="cancelAllData()" class="py-1 px-4">
+              <i class="material-icons mr-2">
+                clear
+              </i>
+              Cancel All
+            </button>
+          </div>
+          <div class="col-2 text-right">
             <button mat-raised-button color="warn" (click)="saveAllData()" class="py-1 px-4">
               <i class="material-icons mr-2">
                 save_alt
