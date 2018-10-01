@@ -87,14 +87,15 @@
         <mat-card>
           <h4 class="section-title">Vehicle Provider <small class="ml-2 text-secondary">({{vehicleProviderList.length}})</small></h4>
           <div class="mt-3 w-100 px-3">
-            <div class="row py-2 vehicle-row align-items-center" *ngFor="let item of vehicleProviderList; let i=index">
+            <div class="row table-row py-3 bg-light">
+              <div class="col-1">NO.</div>
+              <div class="col-3">Vehicle Provider</div>
+              <div class="col">Vehicle Type</div>
+              <div class="col-1">Delete</div>
+            </div>
+            <div class="row py-2 table-row align-items-center" *ngFor="let item of vehicleProviderList; let i=index">
               <div class="col-1">{{i+1}}</div>
               <div class="col-3">{{item.name}}</div>
-              <div class="col-1" style="display:flex">
-                <i class="material-icons">
-                  arrow_forward
-                </i>
-              </div>
               <div class="col">
                 <span *ngFor="let type of item.type" class="mr-4">{{type}}</span>
               </div>
@@ -164,14 +165,15 @@
         <mat-card>
           <h4 class="section-title">Ship Provider <small class="ml-2 text-secondary">({{shipProviderList.length}})</small></h4>
           <div class="mt-3 w-100 px-3">
-            <div class="row py-2 ship-row align-items-center" *ngFor="let item of shipProviderList; let i=index">
+            <div class="row table-row py-3 bg-light">
+              <div class="col-1">NO.</div>
+              <div class="col-3">Ship Provider</div>
+              <div class="col">Ship Type</div>
+              <div class="col-1">Delete</div>
+            </div>
+            <div class="row py-2 table-row align-items-center" *ngFor="let item of shipProviderList; let i=index">
               <div class="col-1">{{i+1}}</div>
               <div class="col-3">{{item.name}}</div>
-              <div class="col-1" style="display:flex">
-                <i class="material-icons">
-                  arrow_forward
-                </i>
-              </div>
               <div class="col">
                 <span *ngFor="let type of item.type" class="mr-4">{{type}}</span>
               </div>
@@ -239,15 +241,16 @@
         <mat-card>
           <h4 class="section-title">Hotel <small class="ml-2 text-secondary">({{hotelList.length}})</small></h4>
           <div class="mt-3 w-100 px-3">
-            <div class="row mb-2 py-1 hotel-row" *ngFor="let item of hotelList; let i=index">
+            <div class="row table-row py-3 bg-light">
+              <div class="col-1">NO.</div>
+              <div class="col-4">Hotel Name</div>
+              <div class="col">Hotel Address</div>
+              <div class="col-1">Delete</div>
+            </div>
+            <div class="row mb-2 py-2 table-row align-items-center" *ngFor="let item of hotelList; let i=index">
               <div class="col-1">{{i+1}}</div>
-              <div class="col-4" style="display:flex">
-                <i class="material-icons mr-2">home</i>{{item.name}}
-              </div>
-              <div class="col" style="display:flex">
-                <i class="material-icons mr-2">pin_drop</i>
-                {{item.address}}
-              </div>
+              <div class="col-4">{{item.name}}</div>
+              <div class="col">{{item.address}}</div>
               <div class="col-1">
                 <button class="trash-btn btn btn-default p-1" (click)="removeItem(i,'hotelList')">
                   <i class="fa fa-trash"></i>
