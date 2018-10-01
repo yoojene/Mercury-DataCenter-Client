@@ -5,6 +5,7 @@ import {
   MetaVehicleProvider,
   MetaShipProvider
 } from "../../module/MetaData";
+import { PostResponse } from "../../module/PostResponse";
 
 declare var $: any;
 
@@ -64,6 +65,8 @@ export class MetaDataComponent implements OnInit {
   showHotelEditor = false
 
   isLoading = true
+  isSaving = false
+  savingResult = ''
 
   constructor(
     private httpService: HttpService
@@ -85,6 +88,13 @@ export class MetaDataComponent implements OnInit {
         alert(error)
       }
     )
+  }
+
+  hideSavingPrompt() {
+    let self = this
+    setTimeout(() => {
+      self.savingResult = ''
+    }, 3000);
   }
 
   nationalityOkBtn() {
@@ -230,6 +240,7 @@ export class MetaDataComponent implements OnInit {
   }
 
   saveAllData() {
+    this.isSaving = true
     this.finalData.nationalities = this.nationalityList
     this.finalData.cabin = this.cabinList
     this.finalData.airline = this.airlineList
@@ -239,11 +250,19 @@ export class MetaDataComponent implements OnInit {
     console.log(this.finalData)
     let data = JSON.stringify(this.finalData)
     this.httpService.postAllMetaData(data).subscribe(
-      response => {
-        console.log(response)
+      (response: PostResponse) => {
+        this.isSaving = false
+        if (response.code == 200) {
+          this.savingResult = 'yes'
+        } else {
+          this.savingResult = 'no'
+        }
+        this.hideSavingPrompt()
       },
       error => {
-        console.log(error)
+        this.isSaving = false
+        this.savingResult = 'no'
+        this.hideSavingPrompt()
       }
     )
   }
