@@ -15,3 +15,11 @@
   outline: none !important;
   color: #bbbbbb;
 }
+
+.loading-mark {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // background-color: rgba($color: #000000, $alpha: 0.1);
+  z-index: 99999;
+}

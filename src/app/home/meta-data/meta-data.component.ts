@@ -63,18 +63,28 @@ export class MetaDataComponent implements OnInit {
   hotelAddress = ''
   showHotelEditor = false
 
+  isLoading = true
 
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private httpService: HttpService
+  ) { }
 
   ngOnInit() {
-    this.httpService.fetchAllMetaData().subscribe(response => {
-      this.airlineList = response['airline']
-      this.cabinList = response['cabin']
-      this.nationalityList = response['nationalities']
-      this.hotelList = response['hotel']
-      this.vehicleProviderList = response['vehicleProvider']
-      this.shipProviderList = response['shipProvider']
-    })
+    this.httpService.fetchAllMetaData().subscribe(
+      response => {
+        this.airlineList = response['airline']
+        this.cabinList = response['cabin']
+        this.nationalityList = response['nationalities']
+        this.hotelList = response['hotel']
+        this.vehicleProviderList = response['vehicleProvider']
+        this.shipProviderList = response['shipProvider']
+        this.isLoading = false
+      },
+      error => {
+        this.isLoading = false
+        alert(error)
+      }
+    )
   }
 
   nationalityOkBtn() {

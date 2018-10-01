@@ -26,6 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -40,6 +41,7 @@ import { MetaDataComponent } from './home/meta-data/meta-data.component';
 import { NewDataComponent } from './home/new-data/new-data.component';
 import { ProfileComponent } from './home/profile/profile.component';
 import { SettingsComponent } from './home/settings/settings.component';
+import { LoadingComponent } from './global/loading/loading.component';
 
 
 @NgModule({
@@ -58,6 +60,7 @@ import { SettingsComponent } from './home/settings/settings.component';
     NewDataComponent,
     ProfileComponent,
     SettingsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ import { SettingsComponent } from './home/settings/settings.component';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
