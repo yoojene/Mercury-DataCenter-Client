@@ -327,7 +327,7 @@
             </div>
           </div>
           <div class="col-2 text-right">
-            <button mat-raised-button (click)="cancelAllData()" class="py-1 px-4">
+            <button mat-raised-button (click)="cancelAllData()" class="py-1 px-4" [disabled]="isSaving || savingResult!=''">
               <i class="material-icons mr-2">
                 clear
               </i>
@@ -335,7 +335,7 @@
             </button>
           </div>
           <div class="col-2 text-right">
-            <button mat-raised-button color="warn" (click)="saveAllData()" class="py-1 px-4">
+            <button mat-raised-button color="warn" (click)="saveAllData()" class="py-1 px-4" [disabled]="isSaving || savingResult!=''">
               <i class="material-icons mr-2">
                 save_alt
               </i>
