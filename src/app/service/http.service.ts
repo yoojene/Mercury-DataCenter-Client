@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class HttpService {
-  host = "http://localhost/MercuryDataCenterServer/"
+  host = "http://localhost/MercuryDataCenterServer/api/"
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,11 @@ export class HttpService {
   }
 
   saveNewDataAPI(tableName, data) {
-    return this.http.post(this.host + 'api/add/' + tableName, data, httpOptions)
+    return this.http.post(this.host + 'add/' + tableName, data, httpOptions)
+  }
+
+  countDataAPI(tableName) {
+    return this.http.get(this.host + 'count/' + tableName, httpOptions)
   }
 
   fetchAllMetaData() {

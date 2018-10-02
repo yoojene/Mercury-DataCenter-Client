@@ -11,12 +11,7 @@
               <span class="lead">Customer</span>
             </ng-template>
             <mat-card class="px-5 my-5">
-              <h4 class="text-center form-title">
-                <i class="material-icons">
-                  account_circle
-                </i>
-                Customer
-              </h4>
+              <h4 class="text-center form-title">Customer</h4>
               <div class="form-container">
                 <mat-form-field>
                   <input matInput placeholder="Full Name" [formControl]="customer.name" required>
@@ -74,10 +69,7 @@
               <span class="lead">Airline</span>
             </ng-template>
             <mat-card class="px-5 my-5">
-              <h4 class="text-center form-title">
-                <i class="material-icons">local_airport</i>
-                Airline
-              </h4>
+              <h4 class="text-center form-title">Airline</h4>
               <div class="form-container">
                 <mat-form-field>
                   <mat-select placeholder="Airline Name" [formControl]="airline.name" required>
@@ -135,10 +127,7 @@
               <span class="lead">Vehicle</span>
             </ng-template>
             <mat-card class="px-5 my-5">
-              <h4 class="text-center form-title">
-                <i class="material-icons mr-2">airport_shuttle</i>
-                Vehicle
-              </h4>
+              <h4 class="text-center form-title">Vehicle</h4>
               <div class="form-container">
                 <mat-form-field class="w-100">
                   <mat-select placeholder="Vehicle Provider *" [formControl]="vehicle.provider" (selectionChange)="onVehicleProviderChange($event)">
@@ -201,10 +190,7 @@
               <span class="lead">Ship</span>
             </ng-template>
             <mat-card class="px-5 my-5">
-              <h4 class="text-center form-title">
-                <i class="material-icons">directions_boat</i>
-                Ship
-              </h4>
+              <h4 class="text-center form-title">Ship</h4>
               <div class="form-container">
                 <mat-form-field class="w-100">
                   <mat-select placeholder="Ship Provider *" [formControl]="ship.provider" (selectionChange)="onShipProviderChange($event)">
@@ -269,10 +255,7 @@
               <span class="lead">Hotel</span>
             </ng-template>
             <mat-card class="px-5 my-5">
-              <h4 class="text-center form-title">
-                <i class="material-icons">hotel</i>
-                Hotel
-              </h4>
+              <h4 class="text-center form-title">Hotel</h4>
               <div class="form-container">
                 <mat-form-field class="w-100">
                   <mat-select placeholder="Hotel Name *" [formControl]="hotel.name" (selectionChange)="onHotelNameChange($event)">

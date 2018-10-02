@@ -1,1 +1,6 @@
 @import '../../../styles.scss';
+.count-box {
+  .table-name::first-letter {
+    text-transform: capitalize
+  }
+}
