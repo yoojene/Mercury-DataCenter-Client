@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from "angular-highcharts";
 import { HttpService } from "../../service/http.service";
 import { PostResponse } from "../../module/PostResponse";
+import { Tables } from "../../module/Tables";
 
 @Component({
   selector: 'app-overview',
@@ -15,21 +16,30 @@ export class OverviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.httpService.countDataAPI('all').subscribe(
-      (response: PostResponse) => {
-        console.log(response)
-        console.log(response.msg)
-        for (const key in response.msg) {
-          if (response.msg.hasOwnProperty(key)) {
-            this.countList.push({
-              tableName: key,
-              value: response.msg[key]
-            })
-          }
+    this.httpService.fetchAllTables()
+      .subscribe(
+        (response: PostResponse) => {
+          // console.log(Tables.values)
+          Tables.values = response.msg
+          this.initCountList()
+        },
+        error => {
+          console.log(error)
         }
-        console.log(this.countList)
+      )
+  }
+
+  initCountList() {
+    for (const key in Tables.values) {
+      if (Tables.values.hasOwnProperty(key)) {
+        const elementArr = Tables.values[key];
+        this.countList.push({
+          tableName: key,
+          count: elementArr.length
+        })
       }
-    )
+    }
+    console.log(this.countList)
   }
 
 }

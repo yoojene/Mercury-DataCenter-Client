@@ -1,10 +1,11 @@
 <div class="data-box bg-light">
   <div class="container">
-    <div class="row count-box mt-2">
+    <div class="row section-box mt-2">
+      <div class="col-12 section-title">Total</div>
       <div class="col text-center" *ngFor="let item of countList">
         <mat-card>
-          <h1 class="display-4">{{item.value}}</h1>
-          <p class="table-name">{{item.tableName}}</p>
+          <h1 class="display-4">{{item.count}}</h1>
+          <p class="table-name lead">{{item.tableName}}</p>
         </mat-card>
       </div>
     </div>

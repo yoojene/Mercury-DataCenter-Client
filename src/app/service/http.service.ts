@@ -34,6 +34,14 @@ export class HttpService {
     return this.http.get(this.host + 'get-meta-data')
   }
 
+  fetchAllTables() {
+    return this.http.get(this.host + 'fetch-all')
+  }
+
+  fetchAllByTableName(tableName) {
+    return this.http.get(this.host + 'fetch-all/' + tableName)
+  }
+
   postAllMetaData(data) {
     return this.http.post(this.host + 'update-meta-data', data, httpOptions)
   }

@@ -1,5 +1,10 @@
 @import '../../../styles.scss';
-.count-box {
+.section-box {
+  .section-title{
+    font-size: 2rem;
+    font-weight: normal;
+    margin:0rem 0rem 1rem .3rem;
+  }
   .table-name::first-letter {
     text-transform: capitalize
   }
