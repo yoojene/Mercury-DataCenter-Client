@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http, URLSearchParams } from '@angular/http'
 import { Observable, throwError, ObservableLike } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { PostResponse } from "../module/PostResponse";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,6 +16,8 @@ const httpOptions = {
 })
 export class HttpService {
   host = "http://localhost/MercuryDataCenterServer/api/"
+
+  test: any
 
   constructor(private http: HttpClient) { }
 

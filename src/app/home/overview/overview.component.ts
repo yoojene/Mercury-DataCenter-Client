@@ -94,7 +94,6 @@ export class OverviewComponent implements OnInit {
       });
       datas.push(obj)
     });
-    console.log(datas)
     this.growthTrendTableData = datas
     return datas
   }
