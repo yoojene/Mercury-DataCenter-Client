@@ -9,5 +9,33 @@
         </mat-card>
       </div>
     </div>
+    <div class="row section-box mt-4">
+      <div class="col-12 section-title">Growth Trend</div>
+      <div class="col-12">
+        <mat-card>
+          <div [chart]="growthTrendChart"></div>
+          <div class="container mt-3">
+            <div class="row">
+              <div class="col-12">
+                <table class="table table-striped">
+                  <thead>
+                    <tr class="bg-primary text-white">
+                      <td>Item</td>
+                      <td *ngFor="let month of months">{{month}}</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of growthTrendTableData">
+                      <td class="table-name">{{item.name}}</td>
+                      <td *ngFor="let d of item.data" [ngClass]="{'text-secondary': d==0}">{{d}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
   </div>
 </div>

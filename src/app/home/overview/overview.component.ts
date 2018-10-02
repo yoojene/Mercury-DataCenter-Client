@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterContentInit } from '@angular/core';
 import { Chart } from "angular-highcharts";
 import { HttpService } from "../../service/http.service";
 import { PostResponse } from "../../module/PostResponse";
 import { Tables } from "../../module/Tables";
+import { GlobalDefault } from "../../module/GlobalDefault";
+import { UtilityService } from "../../service/utility.service";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-overview',
@@ -11,17 +14,51 @@ import { Tables } from "../../module/Tables";
 })
 export class OverviewComponent implements OnInit {
   countList = []
+  growthTrendTableData: any
+  months = GlobalDefault.months
+  growthTrendChart: any
+  growthTrendOptions = {
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: `Monthly Growth Trend ${moment().year()}`
+    },
+    subtitle: {
+      text: '依照每月登记的订单统计'
+    },
+    xAxis: {
+      categories: GlobalDefault.months
+    },
+    yAxis: {
+      title: {
+        text: 'Number of Order'
+      }
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: true
+        },
+        enableMouseTracking: true
+      }
+    },
+    series: []
+  }
+
   constructor(
-    private httpService: HttpService
+    private httpService: HttpService,
+    private utilityService: UtilityService,
   ) { }
 
   ngOnInit() {
     this.httpService.fetchAllTables()
       .subscribe(
         (response: PostResponse) => {
-          // console.log(Tables.values)
+          // Set the global variable
           Tables.values = response.msg
           this.initCountList()
+          this.generateGrowthTrendChart()
         },
         error => {
           console.log(error)
@@ -39,7 +76,32 @@ export class OverviewComponent implements OnInit {
         })
       }
     }
-    console.log(this.countList)
+  }
+
+  statisticsMonthly() {
+    let tableNames = Tables.tables
+    let datas = []
+
+    tableNames.forEach(tableName => {
+      let obj = {
+        name: tableName,
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }
+      let arr = Tables.values[tableName]
+      arr.forEach((element, index) => {
+        let month = this.utilityService.getYearMonthDayFromID(element.id).month
+        obj.data[month - 1] += 1
+      });
+      datas.push(obj)
+    });
+    console.log(datas)
+    this.growthTrendTableData = datas
+    return datas
+  }
+
+  generateGrowthTrendChart() {
+    this.growthTrendOptions.series = this.statisticsMonthly()
+    this.growthTrendChart = new Chart(this.growthTrendOptions)
   }
 
 }

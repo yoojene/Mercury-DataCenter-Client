@@ -2,8 +2,8 @@ export class Tables {
   static tables = [
     'customers',
     'vehicles',
-    'ships',
     'airlines',
+    'ships',
     'hotels'
   ]
   static values = {}

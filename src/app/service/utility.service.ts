@@ -49,4 +49,14 @@ export class UtilityService {
   formatDate(dateObj: MyDate): String {
     return `${dateObj.year}-${this.checkZeroForDateNum(dateObj.month + 1)}-${this.checkZeroForDateNum(dateObj.date)}`
   }
+
+  getYearMonthDayFromID(id) {
+    // ID:   customers-2018092911091111119688
+    let tempStr = id.split('-')[1]
+    return {
+      year: parseInt(tempStr.slice(0, 4)),
+      month: parseInt(tempStr.slice(4, 6)),
+      date: parseInt(tempStr.slice(6, 8))
+    }
+  }
 }
