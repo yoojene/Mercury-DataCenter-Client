@@ -41,7 +41,7 @@ export class CustomerComponent implements OnInit {
     // remove repeat value from nationality array
     let nationalityArr = Array.from(new Set(tempNationalityArr))
     nationalityArr.forEach(element => {
-      var obj = {
+      let obj = {
         name: element,
         y: this.customersData.filter(function (value) {
           return value.nationality == element
