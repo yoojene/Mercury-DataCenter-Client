@@ -1,1 +1,6 @@
 @import '../../../styles.scss';
+.vehicle-table-box {
+  height: 25rem;
+  max-height: 25rem;
+  overflow-y: scroll;
+}
