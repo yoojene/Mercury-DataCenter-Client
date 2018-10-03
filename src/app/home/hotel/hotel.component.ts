@@ -3,6 +3,7 @@ import { HttpService } from "../../service/http.service";
 import { PostResponse } from "../../module/PostResponse";
 import { Chart } from 'angular-highcharts';
 import { Hotel } from "../../module/Hotel";
+import { DownloadService } from '../../service/download.service';
 
 @Component({
   selector: 'app-hotel',
@@ -16,7 +17,8 @@ export class HotelComponent implements OnInit {
   providerTable: any
 
   constructor(
-    private httpService: HttpService
+    private httpService: HttpService,
+    public downloadService: DownloadService
   ) { }
 
   ngOnInit() {
@@ -82,6 +84,10 @@ export class HotelComponent implements OnInit {
 
     this.providerChart = new Chart(providerOptions)
 
+  }
+
+  doDownloadFile() {
+    this.downloadService.downloadFile();
   }
 
 }

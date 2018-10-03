@@ -4,6 +4,7 @@ import { HttpService } from "../../service/http.service";
 import { PostResponse } from "../../module/PostResponse";
 import { Customer } from "../../module/Customer";
 import { Chart } from 'angular-highcharts';
+import { DownloadService } from '../../service/download.service';
 
 @Component({
   selector: 'app-customer',
@@ -16,7 +17,9 @@ export class CustomerComponent implements OnInit {
   nationalityChart: Chart
   nationalityTable: any
 
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private httpService: HttpService,
+    public downloadService: DownloadService) { }
 
   ngOnInit() {
     this.httpService.fetchAllByTableName('customers').subscribe(
@@ -87,5 +90,10 @@ export class CustomerComponent implements OnInit {
     this.nationalityChart = new Chart(nationalityOptions)
 
   }
+
+  doDownloadFile() {
+    this.downloadService.downloadFile();
+  }
+
 
 }

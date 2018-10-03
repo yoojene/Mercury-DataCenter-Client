@@ -1,8 +1,12 @@
 <div class="data-box">
   <div class="container mt-2">
+
     <div class="row">
       <div class="col">
         <mat-card>
+          <div class="row justify-content-end">
+            <button class="bg-success text-white" mat-button (click)="doDownloadFile()">Download</button>
+          </div>
           <div class="row">
             <div class="col-8">
               <div [chart]="providerChart"></div>

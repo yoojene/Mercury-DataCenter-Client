@@ -3,6 +3,7 @@ import { HttpService } from "../../service/http.service";
 import { PostResponse } from "../../module/PostResponse";
 import { Chart } from 'angular-highcharts';
 import { Vehicle } from "../../module/Vehicle";
+import { DownloadService } from '../../service/download.service';
 
 @Component({
     selector: 'app-vehicle',
@@ -17,7 +18,8 @@ export class VehicleComponent implements OnInit {
     providerTable: any
 
     constructor(
-        private httpService: HttpService
+        private httpService: HttpService,
+        public downloadService: DownloadService
     ) { }
 
     ngOnInit() {
@@ -218,5 +220,9 @@ export class VehicleComponent implements OnInit {
 
 
     }
+
+  doDownloadFile() {
+    this.downloadService.downloadFile();
+  }
 
 }
