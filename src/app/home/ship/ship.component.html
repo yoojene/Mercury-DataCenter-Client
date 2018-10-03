@@ -1,3 +1,33 @@
 <div class="data-box">
-  ship works!
-</div>
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col">
+          <mat-card>
+            <div class="row">
+              <div class="col-8">
+                <div [chart]="providerChart"></div>
+              </div>
+              <div class="col">
+                <div class="provider-table-box">
+                  <table class="table table-striped provider-table">
+                    <thead>
+                      <tr class="bg-primary text-white">
+                        <td class="pl-4">Ship Provider</td>
+                        <td class="text-center">Orders</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of providerTable">
+                        <td class="pl-4">{{item.name}}</td>
+                        <td class="text-center">{{item.y}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
