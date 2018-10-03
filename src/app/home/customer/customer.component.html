@@ -8,20 +8,22 @@
               <div [chart]="nationalityChart"></div>
             </div>
             <div class="col">
-              <table class="table table-striped">
-                <thead>
-                  <tr class="bg-danger text-white">
-                    <td class="pl-4">Nationality</td>
-                    <td class="text-center">Customers</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of nationalityTable">
-                    <td class="pl-4">{{item.name}}</td>
-                    <td class="text-center">{{item.y}}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="nationality-table-box">
+                <table class="table table-striped nationality-table">
+                  <thead>
+                    <tr class="bg-danger text-white">
+                      <td class="pl-4">Nationality</td>
+                      <td class="text-center">Customers</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of nationalityTable">
+                      <td class="pl-4">{{item.name}}</td>
+                      <td class="text-center">{{item.y}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </mat-card>
